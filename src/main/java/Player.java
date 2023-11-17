@@ -3,6 +3,7 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Player extends Objects {

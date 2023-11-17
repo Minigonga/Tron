@@ -15,8 +15,23 @@ Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo P
 - **Rastro** - As motos vão deixar 1 rastro para trás enquanto se movem.
 - **Gigantes** - Monstros que estão no quadro de jogo que vão fazer desaparecer o rastro se houver na posição onde estão ou eliminam os jogadores.
 - **Colisão** - Um jogador que toque em algum dos dois rastros ou na parede vai morrer e assim acabar por perder o jogo.
-
+- **Salto** - Um jogador pode saltar evitando assim um rastro à sua frente.
 ### DESIGN
+
+### MOVIMENTO
+
+**Problem in Context**
+
+Não conseguimos mover o jogador constantemente sem pressionar nova tecla, isto é, o jogado fica parado até o utilizador clicar numa tecla.
+
+**The Pattern**
+
+Tentamos com a key da lanterna, porém estamos a pensar em implementar o java swing.
+
+**Implementation**
+
+
+
 
 > This section should be organized in different subsections, each describing a different design problem that you had to solve during the project. Each subsection should be organized in four different parts:
 

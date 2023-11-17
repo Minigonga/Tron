@@ -2,27 +2,30 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.swing.SwingTerminal;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private Player p1;
-    private Player p2;
-    private int height;
-    private int width;
-    private List<Wall> walls;
+    final Player p1;
+    final Player p2;
+    final int height;
+    final int width;
+    final List<Wall> walls;
     Screen screen;
     Game() throws IOException{
         p1 = new Player(1,1,"#123456");
         p2 = new Player(4,3,"#987654");
-        height = 80;
-        width = 80;
+        height = 90;
+        width = 191;
         this.walls = createWalls();
         TerminalSize terminalSize = new TerminalSize(width, height);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
@@ -58,10 +61,16 @@ public class Game {
         }
         screen.refresh();
     }
-
     public void run() throws IOException{
-            while (true){
-                draw();
+        while (true){
+            draw();
+            KeyStroke key = screen.readInput();
+            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q'){
+                screen.close();
             }
+            if (key.getKeyType()==KeyType.EOF){
+                break;
+            }
+        }
     }
 }
