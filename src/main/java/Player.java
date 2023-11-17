@@ -5,19 +5,12 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 import java.util.ArrayList;
 
-public class Player {
-    private Position playerPos;
+public class Player extends Objects {
     private ArrayList<Position> trail;
-    Player(int x,int y){
-        playerPos = new Position(x,y);
-    }
-
-    public Position getPlayerPos() {
-        return playerPos;
-    }
-
-    public void setPlayerPos(Position playerPos) {
-        this.playerPos = playerPos;
+    private String color;
+    Player(int x,int y, String color){
+        super(x,y);
+        this.color = color;
     }
 
     public ArrayList<Position> getTrail() {
@@ -28,8 +21,8 @@ public class Player {
         this.trail = trail;
     }
     public void draw(TextGraphics graphics){
-        graphics.setForegroundColor(TextColor.Factory.fromString("#999999"));
+        graphics.setForegroundColor(TextColor.Factory.fromString(color));
         graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(playerPos.getX(), playerPos.getY()), "P");
+        graphics.putString(new TerminalPosition(getPos().getX(), getPos().getY()), "P");
     }
 }

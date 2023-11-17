@@ -7,10 +7,10 @@ Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo P
 ### IMPLEMENTED FEATURES
 
 - **Screen** - Abrir o terminal onde vai decorrer o jogo.
+- **Display** - Dar display ao quadro onde que vai ter as duas motos e os seus rastros e as paredes sempre atualizados.
 
 ### PLANNED FEATURES
 
-- **Display** - Dar display ao quadro onde que vai ter as duas motos e os seus rastros e as paredes sempre atualizados.
 - **Movimento** - Os dois jogadores vão se mover na direção e sentido da última tecla que pressionaram para se movimentar.
 - **Rastro** - As motos vão deixar 1 rastro para trás enquanto se movem.
 - **Gigantes** - Monstros que estão no quadro de jogo que vão fazer desaparecer o rastro se houver na posição onde estão ou eliminam os jogadores.

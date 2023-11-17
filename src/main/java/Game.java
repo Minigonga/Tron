@@ -14,8 +14,8 @@ public class Game {
     private int width;
     Screen screen;
     Game() throws IOException{
-        p1 = new Player(1,1);
-        p2 = new Player(4,3);
+        p1 = new Player(1,1,"#123456");
+        p2 = new Player(4,3,"#987654");
         heigth = 80;
         width = 80;
         TerminalSize terminalSize = new TerminalSize(width, heigth);
