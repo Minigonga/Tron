@@ -1,3 +1,8 @@
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
+
 import java.util.ArrayList;
 
 public class Player {
@@ -21,5 +26,10 @@ public class Player {
 
     public void setTrail(ArrayList<Position> trail) {
         this.trail = trail;
+    }
+    public void draw(TextGraphics graphics){
+        graphics.setForegroundColor(TextColor.Factory.fromString("#999999"));
+        graphics.enableModifiers(SGR.BOLD);
+        graphics.putString(new TerminalPosition(playerPos.getX(), playerPos.getY()), "P");
     }
 }
