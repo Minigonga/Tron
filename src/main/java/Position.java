@@ -5,7 +5,9 @@ public class Position {
         this.x = x;
         this.y = y;
     }
-
+    public boolean equals(Position p) {
+        return x==p.getX() && y==p.getY();
+    }
     public int getX() {
         return x;
     }

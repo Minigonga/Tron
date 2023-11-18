@@ -14,19 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private Player p1;
-    private Player p2;
-    private int height;
-    private int width;
-    private List<Wall> walls;
-    private Terminal terminal;
-    private Screen screen;
+    final Player p1;
+    final Player p2;
+    final int height;
+    final int width;
+    final List<Wall> walls;
+    final Terminal terminal;
+    final Screen screen;
     Game() throws IOException{
-        p1 = new Player(40,10,"#FFFFFF");
-        p2 = new Player(4,3,"#987654");
-        height = 86;
-        width = 191;
-        this.walls = createWalls();
+        height = 50;
+        width = 150;
         TerminalSize terminalSize = new TerminalSize(width, height);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
         terminal = terminalFactory.createTerminal();
@@ -34,6 +31,9 @@ public class Game {
         screen.setCursorPosition(null);
         screen.startScreen();
         screen.doResizeIfNecessary();
+        p1 = new Player(65,30,"#FFFFFF");
+        p2 = new Player(125,30,"#987654");
+        this.walls = createWalls();
     }
 
     private List<Wall> createWalls() {
@@ -60,7 +60,18 @@ public class Game {
         }
         screen.refresh();
     }
-
+    public boolean collision(Player p){
+        for (Wall wall : walls){
+            if (p.getPos().equals(wall.getPos())){return true;}
+        }
+        for (Position position: p1.getTrail()){
+            if (p.getPos().equals(position)){return true;}
+        }
+        for (Position position: p2.getTrail()){
+            if (p.getPos().equals(position)){return true;}
+        }
+        return p1.getPos().equals(p2.getPos());
+    }
     public void run() throws IOException{
         byte right = 0;
         byte left = 1;
@@ -68,15 +79,30 @@ public class Game {
         byte up = 3;
         long i = 0;
         p1.setDirection(down);
+        p2.setDirection(right);
         draw();
-        while (true) {
+        boolean flag= true;
+        while (flag) {
             i++;
-            if (i%30000000 == 0) {
+            if (collision(p1)){
+                flag=false;
+                if (collision(p2)){
+                    System.out.println("Draw");
+                }
+                else{
+                    System.out.println("P2 WON");
+                    break;
+                }
+            }
+            else if (collision(p2)) {
+                System.out.println("P1 WON");
+                flag = false;
+            }
+            if (i%90000 == 0) {
                 KeyStroke key = terminal.pollInput();
                 // Handle keyboard input
                 if (key != null) {
                     if (key.getKeyType() == KeyType.ArrowLeft) {
-                        System.out.println("a");
                         if(p1.getDirection() != right) {p1.setDirection(left);}
                     } else if (key.getKeyType() == KeyType.ArrowRight) {
                         if(p1.getDirection() != left) {p1.setDirection(right);}
@@ -84,16 +110,25 @@ public class Game {
                         if(p1.getDirection() != down) {p1.setDirection(up);}
                     } else if (key.getKeyType() == KeyType.ArrowDown) {
                         if(p1.getDirection() != up) {p1.setDirection(down);}
-                    } else if (key.getKeyType() == KeyType.Escape) {
+                    }else if (key.getKeyType() == KeyType.Character && key.getCharacter()=='a') {
+                        if(p2.getDirection() != right) {p2.setDirection(left);}
+                    } else if (key.getKeyType() == KeyType.Character && key.getCharacter()=='d') {
+                        if(p2.getDirection() != left) {p2.setDirection(right);}
+                    } else if (key.getKeyType() == KeyType.Character && key.getCharacter()=='w') {
+                        if(p2.getDirection() != down) {p2.setDirection(up);}
+                    } else if (key.getKeyType() == KeyType.Character && key.getCharacter()=='s') {
+                        if (p2.getDirection() != up) {p2.setDirection(down);}
+                    }else if (key.getKeyType() == KeyType.Escape) {
                         screen.close();
                     } else if (key.getKeyType()==KeyType.EOF) {
                         break;
                     }
                 }
                 p1.move();
+                p2.move();
                 draw();
             }
-
         }
+        screen.close();
     }
 }
