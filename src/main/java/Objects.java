@@ -1,7 +1,7 @@
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public abstract class Objects {
-    private Position pos;
+    protected Position pos;
     Objects(int x, int y){
         pos=new Position(x,y);
     }
