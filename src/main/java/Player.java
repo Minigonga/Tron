@@ -9,11 +9,15 @@ import java.util.ArrayList;
 public class Player extends Objects {
     private ArrayList<Position> trail;
     private int direction;
+    private boolean collide;
     private String color;
-    Player(int x,int y, String color){
+    private String number;
+    Player(int x,int y, String color, String number){
         super(x,y);
         this.color = color;
         this.trail = new ArrayList<>();
+        this.collide=false;
+        this.number = number;
     }
 
     public ArrayList<Position> getTrail() {
@@ -26,7 +30,7 @@ public class Player extends Objects {
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString(color));
         graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(getPos().getX(), getPos().getY()), "P");
+        graphics.putString(new TerminalPosition(getPos().getX(), getPos().getY()), number);
         for (Position p : trail) {
             graphics.setBackgroundColor(TextColor.Factory.fromString(color));
             graphics.enableModifiers(SGR.BOLD);
@@ -52,4 +56,12 @@ public class Player extends Objects {
     }
     public int getDirection() {return direction;}
     public void setDirection(int direction) {this.direction = direction;}
+
+    public boolean getCollide() {
+        return collide;
+    }
+
+    public void setCollide(boolean collide) {
+        this.collide = collide;
+    }
 }

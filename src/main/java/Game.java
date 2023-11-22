@@ -1,3 +1,4 @@
+import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
@@ -9,6 +10,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +33,8 @@ public class Game {
         screen.setCursorPosition(null);
         screen.startScreen();
         screen.doResizeIfNecessary();
-        p1 = new Player(65,30,"#FFFFFF");
-        p2 = new Player(125,30,"#987654");
+        p1 = new Player(65,30,"#FFFFFF", "1");
+        p2 = new Player(125,30,"#987654", "2");
         this.walls = createWalls();
     }
 
@@ -60,17 +62,23 @@ public class Game {
         }
         screen.refresh();
     }
-    public boolean collision(Player p){
+    public void collision(){
         for (Wall wall : walls){
-            if (p.getPos().equals(wall.getPos())){return true;}
+            if (p1.getPos().equals(wall.getPos())){p1.setCollide(true);}
+            if (p2.getPos().equals(wall.getPos())){p2.setCollide(true);}
         }
         for (Position position: p1.getTrail()){
-            if (p.getPos().equals(position)){return true;}
+            if (p1.getPos().equals(position)){p1.setCollide(true);}
+            if (p2.getPos().equals(position)){p2.setCollide(true);}
         }
         for (Position position: p2.getTrail()){
-            if (p.getPos().equals(position)){return true;}
+            if (p1.getPos().equals(position)){p1.setCollide(true);}
+            if (p2.getPos().equals(position)){p2.setCollide(true);}
         }
-        return p1.getPos().equals(p2.getPos());
+        if (p1.getPos()==p2.getPos()){
+            p1.setCollide(true);
+            p2.setCollide(true);
+        }
     }
     public void run() throws IOException{
         byte right = 0;
@@ -81,24 +89,10 @@ public class Game {
         p1.setDirection(down);
         p2.setDirection(right);
         draw();
-        boolean flag= true;
-        while (flag) {
+        while (true) {
             i++;
-            if (collision(p1)){
-                flag=false;
-                if (collision(p2)){
-                    System.out.println("Draw");
-                }
-                else{
-                    System.out.println("P2 WON");
-                    break;
-                }
-            }
-            else if (collision(p2)) {
-                System.out.println("P1 WON");
-                flag = false;
-            }
-            if (i%90000 == 0) {
+            if (i%28000000 == 0) {
+                collision();
                 KeyStroke key = terminal.pollInput();
                 // Handle keyboard input
                 if (key != null) {
@@ -110,13 +104,13 @@ public class Game {
                         if(p1.getDirection() != down) {p1.setDirection(up);}
                     } else if (key.getKeyType() == KeyType.ArrowDown) {
                         if(p1.getDirection() != up) {p1.setDirection(down);}
-                    }else if (key.getKeyType() == KeyType.Character && key.getCharacter()=='a') {
+                    }else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='a' || key.getCharacter()=='A')) {
                         if(p2.getDirection() != right) {p2.setDirection(left);}
-                    } else if (key.getKeyType() == KeyType.Character && key.getCharacter()=='d') {
+                    } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='d' || key.getCharacter()=='D')) {
                         if(p2.getDirection() != left) {p2.setDirection(right);}
-                    } else if (key.getKeyType() == KeyType.Character && key.getCharacter()=='w') {
+                    } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='w' || key.getCharacter()=='W')) {
                         if(p2.getDirection() != down) {p2.setDirection(up);}
-                    } else if (key.getKeyType() == KeyType.Character && key.getCharacter()=='s') {
+                    } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='s' || key.getCharacter()=='S')) {
                         if (p2.getDirection() != up) {p2.setDirection(down);}
                     }else if (key.getKeyType() == KeyType.Escape) {
                         screen.close();
@@ -126,8 +120,22 @@ public class Game {
                 }
                 p1.move();
                 p2.move();
+                if (p1.getCollide() || p2.getCollide()) {
+                    break;
+                }
                 draw();
             }
+        }
+        if (p1.getCollide()){
+            if (p2.getCollide()){
+                System.out.println("Draw");
+            }
+            else{
+                System.out.println("P2 WON");
+            }
+        }
+        else {
+            System.out.println("P1 WON");
         }
         screen.close();
     }
