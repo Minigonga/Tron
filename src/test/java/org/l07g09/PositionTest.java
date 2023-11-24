@@ -1,3 +1,5 @@
+package org.l07g09;
+
 import org.junit.jupiter.api.Test;
 import org.l07g09.Position;
 
