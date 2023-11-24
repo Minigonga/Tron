@@ -1,8 +1,10 @@
+package org.l07g09;
+
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public abstract class Objects {
+public abstract class Element {
     protected Position pos;
-    Objects(int x, int y){
+    Element(int x, int y){
         pos=new Position(x,y);
     }
     public abstract void draw(TextGraphics graphics);
