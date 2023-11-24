@@ -9,11 +9,11 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
+import org.l07g09.Element.Motorcycle.Player;
+import org.l07g09.Element.Trail;
+import org.l07g09.Element.Wall;
 
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -30,8 +30,8 @@ public class Game {
     final Terminal terminal;
     final Screen screen;
     Game() throws IOException, FontFormatException, URISyntaxException {
-        height = 150;
-        width = 300;
+        height = 196;
+        width = 382;
 
         URL resource = getClass().getClassLoader().getResource("square.ttf");
         File fontFile = new File(resource.toURI());
@@ -90,11 +90,13 @@ public class Game {
             if (p1.getPos().equals(wall.getPos())){p1.setCollide(true);}
             if (p2.getPos().equals(wall.getPos())){p2.setCollide(true);}
         }
-        for (Position position: p1.getTrail()){
+        for (Trail trail: p1.getTrails()){
+            Position position = trail.getPos();
             if (p1.getPos().equals(position)){p1.setCollide(true);}
             if (p2.getPos().equals(position)){p2.setCollide(true);}
         }
-        for (Position position: p2.getTrail()){
+        for (Trail trail: p2.getTrails()){
+            Position position = trail.getPos();
             if (p1.getPos().equals(position)){p1.setCollide(true);}
             if (p2.getPos().equals(position)){p2.setCollide(true);}
         }
@@ -114,7 +116,7 @@ public class Game {
         draw();
         while (true) {
             i++;
-            if (i%30000000 == 0) {
+            if (i%20000000 == 0) {
                 KeyStroke key = terminal.pollInput();
                 // Handle keyboard input
                 if (key != null) {
