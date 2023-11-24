@@ -10,6 +10,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import org.l07g09.Element.Motorcycle.Player;
+import org.l07g09.Element.Motorcycle.PlayerBot;
 import org.l07g09.Element.Trail;
 import org.l07g09.Element.Wall;
 
@@ -32,7 +33,6 @@ public class Game {
     Game() throws IOException, FontFormatException, URISyntaxException {
         height = 196;
         width = 382;
-
         URL resource = getClass().getClassLoader().getResource("square.ttf");
         File fontFile = new File(resource.toURI());
         Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -62,14 +62,15 @@ public class Game {
     }
 
     private List<Wall> createWalls() {
+        String color = "#0000FF";
         List<Wall> walls = new ArrayList<>();
         for (int c = 0; c < width; c++) {
-            walls.add(new Wall(c, 0));
-            walls.add(new Wall(c, height - 1));
+            walls.add(new Wall(c, 0, color));
+            walls.add(new Wall(c, height - 1, color));
         }
         for (int r = 1; r < height - 1; r++) {
-            walls.add(new Wall(0, r));
-            walls.add(new Wall(width - 1, r));
+            walls.add(new Wall(0, r, color));
+            walls.add(new Wall(width - 1, r, color));
         }
         return walls;
     }

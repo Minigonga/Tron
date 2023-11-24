@@ -6,10 +6,10 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Trail extends Element {
-    String color;
+
+
     public Trail(int x, int y, String color) {
-        super(x, y);
-        this.color = color;
+        super(x, y, color);
     }
 
     @Override
