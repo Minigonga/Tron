@@ -1,7 +1,6 @@
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
+package org.l07g09;
+
+import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
@@ -9,9 +8,16 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,18 +29,35 @@ public class Game {
     final List<Wall> walls;
     final Terminal terminal;
     final Screen screen;
-    Game() throws IOException{
-        height = 50;
-        width = 150;
-        TerminalSize terminalSize = new TerminalSize(width, height);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-        terminal = terminalFactory.createTerminal();
+    Game() throws IOException, FontFormatException, URISyntaxException {
+        height = 150;
+        width = 300;
+
+        URL resource = getClass().getClassLoader().getResource("square.ttf");
+        File fontFile = new File(resource.toURI());
+        Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(font);
+
+        DefaultTerminalFactory factory = new DefaultTerminalFactory();
+
+        Font loadedFont = font.deriveFont(Font.PLAIN, 4);
+        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
+        factory.setTerminalEmulatorFontConfiguration(fontConfig);
+        factory.setForceAWTOverSwing(true);
+        factory.setInitialTerminalSize(new TerminalSize(width, height));
+
+        terminal = factory.createTerminal();
         screen = new TerminalScreen(terminal);
-        screen.setCursorPosition(null);
-        screen.startScreen();
-        screen.doResizeIfNecessary();
-        p1 = new Player(65,30,"#FFFFFF", "1");
-        p2 = new Player(125,30,"#987654", "2");
+        screen.setCursorPosition(null);   // we don't need a cursor
+        screen.startScreen();             // screens must be started
+        screen.doResizeIfNecessary();     // resize screen if necessary
+
+        screen.refresh();
+
+        p1 = new Player(55,30,"#FFFFFF", "1");
+        p2 = new Player(100,40,"#987654", "2");
         this.walls = createWalls();
     }
 
@@ -86,13 +109,12 @@ public class Game {
         byte down = 2;
         byte up = 3;
         long i = 0;
-        p1.setDirection(down);
-        p2.setDirection(right);
+        p1.setDirection(right);
+        p2.setDirection(up);
         draw();
         while (true) {
             i++;
-            if (i%28000000 == 0) {
-                collision();
+            if (i%30000000 == 0) {
                 KeyStroke key = terminal.pollInput();
                 // Handle keyboard input
                 if (key != null) {
@@ -119,7 +141,9 @@ public class Game {
                     }
                 }
                 p1.move();
+                collision();
                 p2.move();
+                collision();
                 if (p1.getCollide() || p2.getCollide()) {
                     break;
                 }

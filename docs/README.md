@@ -1,4 +1,4 @@
-## LDTS_<07><07> - <TRON>
+## LDTS_709 - TRON
 
 Vamos fazer o trabalho sobre o Tron, um jogo em que dois jogadores controlam uma moto e deixam 1 rastro pela área de jogo. Se alguém tocar no rastro (incluindo o seu), perde.
 
@@ -18,7 +18,11 @@ Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo P
 - **Salto** - Um jogador pode saltar evitando assim um rastro à sua frente.
 - **Boost** - Um jogador pode andar numa velocidade mais rápida durante um curto período de tempo.
 
+### UML
+![UMLTRON.png](Images%2FUMLTRON.png)
+
 ### DESIGN
+
 
 #### MOVIMENTO
 
@@ -34,11 +38,11 @@ Utilizamos o "KeyStroke key = terminal.pollInput();". Graças a esta implementa�
 
 A implementação foi feita na classe *Game*, dentro da função *run*.
 
-![runmove.png](runmove.png)
+![runmove.png](Images/runmove.png)
 
 Necessitamos também de adicionar algumas funções na classe *Player* para podermos movimentar a moto do jogador.
 
-![playermove.png](playermove.png)
+![playermove.png](Images/playermove.png)
 
 **Consequences**
 

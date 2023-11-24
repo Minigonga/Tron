@@ -1,18 +1,20 @@
+package org.l07g09;
+
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import org.l07g09.Element;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
-public class Player extends Objects {
+public class Player extends Element {
     private ArrayList<Position> trail;
     private int direction;
     private boolean collide;
     private String color;
     private String number;
-    Player(int x,int y, String color, String number){
+    public Player(int x,int y, String color, String number){
         super(x,y);
         this.color = color;
         this.trail = new ArrayList<>();
