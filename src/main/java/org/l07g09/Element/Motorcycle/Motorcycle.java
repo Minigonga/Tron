@@ -7,14 +7,16 @@ import org.l07g09.Position;
 import java.util.ArrayList;
 
 public abstract class Motorcycle extends Element {
+
     protected ArrayList<Trail> trails;
+
     protected int direction;
+
     protected boolean collide;
-    protected String color;
+
     public Motorcycle(int x, int y, String color) {
-        super(x, y);
+        super(x, y, color);
         this.trails = new ArrayList<>();
-        this.color = color;
         this.collide=false;
     }
 
@@ -40,11 +42,8 @@ public abstract class Motorcycle extends Element {
         return trails;
     }
 
-    public void setTrail(ArrayList<Trail> trails) {
-        this.trails = trails;
-    }
-
     public int getDirection() {return direction;}
+
     public void setDirection(int direction) {this.direction = direction;}
 
     public boolean getCollide() {

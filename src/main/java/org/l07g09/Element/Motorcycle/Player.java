@@ -8,7 +8,9 @@ import org.l07g09.Element.Trail;
 import org.l07g09.Position;
 
 public class Player extends Motorcycle {
-    private String number;
+
+    protected String number;
+
     public Player(int x,int y, String color, String number){
         super(x,y, color);
         this.number = number;
