@@ -1,6 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import org.l07g09.Player;
+import org.l07g09.Element.Motorcycle.Player;
 import org.l07g09.Position;
 
 

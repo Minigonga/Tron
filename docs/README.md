@@ -18,7 +18,7 @@ Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo P
 - **Salto** - Um jogador pode saltar evitando assim um rastro à sua frente.
 - **Boost** - Um jogador pode andar numa velocidade mais rápida durante um curto período de tempo.
 
-### UML
+### UML CLASS DIAGRAM
 ![UMLTRON.png](Images%2FUMLTRON.png)
 
 ### DESIGN

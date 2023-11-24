@@ -1,13 +1,12 @@
-package org.l07g09;
+package org.l07g09.Element;
 
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import org.l07g09.Element;
 
 public class Wall extends Element {
-    Wall(int x, int y){
+    public Wall(int x, int y){
         super (x,y);
     }
     public void draw(TextGraphics graphics){
