@@ -1,4 +1,4 @@
-package org.l07g09.model.game.element;
+package org.l07g09;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
