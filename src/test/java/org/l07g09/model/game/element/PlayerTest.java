@@ -10,9 +10,15 @@ import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerTest {
-    private Player player = new Player(0,0,"#FFFFFF", "1");
+    private final Player player = new Player(0,0,"#FFFFFF", "1");
     @Test
-    public void getTrail() {
+    public void Player() {
+        Player p = new Player(0,0,"#FFFFFF", "1");
+        assertTrue(p.getPos().equals(new Position(0,0)));
+        assertEquals("#FFFFFF", p.getColor());
+    }
+    @Test
+    public void getTrails() {
         assertTrue(player.getTrails().isEmpty(), "The ArrayList should be empty");
     }
     @Test
@@ -28,6 +34,7 @@ public class PlayerTest {
         assertTrue(player.getPos().equals(p));
         assertEquals(0, player.getPos().getY());
     }
+    @Test
     public void getDirection() {
         assertEquals(-1, player.getDirection(), "Se não deu set, então a direction = -1.");
 
