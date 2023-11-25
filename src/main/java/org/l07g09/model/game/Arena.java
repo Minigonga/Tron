@@ -31,8 +31,8 @@ public class Arena {
     final Terminal terminal;
     final Screen screen;
     public Arena() throws IOException, FontFormatException, URISyntaxException {
-        height = 196;
-        width = 382;
+        height = 190;
+        width = 240;
         URL resource = getClass().getClassLoader().getResource("square.ttf");
         File fontFile = new File(resource.toURI());
         Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -64,13 +64,13 @@ public class Arena {
     private List<Wall> createWalls() {
         String color = "#0000FF";
         List<Wall> walls = new ArrayList<>();
-        for (int c = 0; c < width; c++) {
+        for (int c = 0; c < width -50; c++) {
             walls.add(new Wall(c, 0, color));
             walls.add(new Wall(c, height - 1, color));
         }
         for (int r = 1; r < height - 1; r++) {
             walls.add(new Wall(0, r, color));
-            walls.add(new Wall(width - 1, r, color));
+            walls.add(new Wall(width - 51, r, color));
         }
         return walls;
     }
