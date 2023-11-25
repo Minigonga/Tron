@@ -12,7 +12,7 @@ import org.l07g09.model.Position;
 public class Player extends Element {
     protected ArrayList<Trail> trails;
 
-    private int direction;
+    private int direction = -1;
 
     private boolean collide;
 
