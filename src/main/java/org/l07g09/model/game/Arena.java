@@ -121,23 +121,33 @@ public class Arena {
                 KeyStroke key = terminal.pollInput();
                 // Handle keyboard input
                 if (key != null) {
-                    if (key.getKeyType() == KeyType.ArrowLeft) {
-                        if(p1.getDirection() != right) {p1.setDirection(left);}
-                    } else if (key.getKeyType() == KeyType.ArrowRight) {
-                        if(p1.getDirection() != left) {p1.setDirection(right);}
-                    } else if (key.getKeyType() == KeyType.ArrowUp) {
-                        if(p1.getDirection() != down) {p1.setDirection(up);}
-                    } else if (key.getKeyType() == KeyType.ArrowDown) {
-                        if(p1.getDirection() != up) {p1.setDirection(down);}
-                    }else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='a' || key.getCharacter()=='A')) {
-                        if(p2.getDirection() != right) {p2.setDirection(left);}
+                    if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='a' || key.getCharacter()=='A')) {
+                        if (p1.getDirection() != right) {p1.setDirection(left);}
                     } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='d' || key.getCharacter()=='D')) {
-                        if(p2.getDirection() != left) {p2.setDirection(right);}
+                        if (p1.getDirection() != left) {p1.setDirection(right);}
                     } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='w' || key.getCharacter()=='W')) {
-                        if(p2.getDirection() != down) {p2.setDirection(up);}
+                        if (p1.getDirection() != down) {p1.setDirection(up);}
                     } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='s' || key.getCharacter()=='S')) {
+                        if (p1.getDirection() != up) {p1.setDirection(down);}
+                    } else if (key.getKeyType() == KeyType.Character && (key.getCharacter() == ' ')) {
+                        //p1.jump();
+                    } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='x' || key.getCharacter()=='X')) {
+                        p1.boost();
+                    } else if (key.getKeyType() == KeyType.ArrowLeft) {
+                        if (p2.getDirection() != right) {p2.setDirection(left);}
+                    } else if (key.getKeyType() == KeyType.ArrowRight) {
+                        if (p2.getDirection() != left) {p2.setDirection(right);}
+                    } else if (key.getKeyType() == KeyType.ArrowUp) {
+                        if (p2.getDirection() != down) {p2.setDirection(up);}
+                    } else if (key.getKeyType() == KeyType.ArrowDown) {
                         if (p2.getDirection() != up) {p2.setDirection(down);}
-                    }else if (key.getKeyType() == KeyType.Escape) {
+                    } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='l' || key.getCharacter()=='L')) {
+                        //p2.jump();
+                    } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='p' || key.getCharacter()=='P')) {
+                        p2.boost();
+
+                    }
+                    else if (key.getKeyType() == KeyType.Escape) {
                         screen.close();
                     } else if (key.getKeyType()==KeyType.EOF) {
                         break;

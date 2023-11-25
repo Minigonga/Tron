@@ -10,6 +10,7 @@ import org.l07g09.model.Position;
 
 
 public class Player extends Element {
+    private int boostCount;
     protected ArrayList<Trail> trails;
 
     private int direction = -1;
@@ -23,6 +24,7 @@ public class Player extends Element {
         this.trails = new ArrayList<>();
         this.collide=false;
         this.number = number;
+        this.boostCount = 0;
     }
 
     public ArrayList<Trail> getTrails() {
@@ -39,7 +41,14 @@ public class Player extends Element {
             graphics.putString(new TerminalPosition(trail.getPos().getX(), trail.getPos().getY()), " ");
         }
     }
-
+    public void boost() {
+        if (boostCount<3) {
+            for (int i = 0; i <7; i++) {
+                move();
+            }
+            boostCount++;
+        }
+    }
     public void move() {
         byte right = 0;
         byte left = 1;
@@ -69,4 +78,6 @@ public class Player extends Element {
     public void setCollide(boolean collide) {
         this.collide = collide;
     }
+
+    public int getBoostCount() {return boostCount;}
 }

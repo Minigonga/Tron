@@ -11,11 +11,14 @@ Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo P
 - **Movimento** - Os dois jogadores vão se mover na direção e sentido da última tecla que pressionaram para se movimentar.
 - **Rastro** - As motos vão deixar 1 rastro para trás enquanto se movem.
 - **Colisão** - Um jogador que toque em algum dos dois rastros ou na parede vai morrer e assim acabar por perder o jogo.
+- **Boost** - Um jogador pode andar numa velocidade mais rápida durante um curto período de tempo.
 
 ### PLANNED FEATURES
 
 - **Salto** - Um jogador pode saltar evitando assim um rastro à sua frente.
-- **Boost** - Um jogador pode andar numa velocidade mais rápida durante um curto período de tempo.
+- **Score** - Mostra as partidas ganhas por cada jogador por exemplo (P1 2-3 P2).
+- **Menu** - Quando inciar o programa aparece o menu que vai ter como opções (Start game, instructions e Exit game).
+- **Timer** - Durante o jogo aparece há quanto tempo o jogo está a decorrer.
 
 ### UML CLASS DIAGRAM
 
