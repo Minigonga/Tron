@@ -1,4 +1,4 @@
-package org.l07g09;
+package org.l07g09.model.game.element;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
@@ -8,6 +8,7 @@ import com.googlecode.lanterna.screen.Screen;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.l07g09.Game;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -18,18 +19,6 @@ import java.io.IOException;
 import static org.mockito.Mockito.*;
 
 class GameTest {
-    @Mock
-    private TextGraphics graphics;
-
-    @Mock
-    private Screen screen;
-
-    @InjectMocks
-    private Game game;
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.initMocks(this);
-    }
     @Test
     void draw() throws IOException {
     }
