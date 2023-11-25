@@ -1,7 +1,7 @@
-package org.l07g09.Element;
+package org.l07g09.model.game.element;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
-import org.l07g09.Position;
+import org.l07g09.model.Position;
 
 public abstract class Element {
 

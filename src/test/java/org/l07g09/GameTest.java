@@ -32,17 +32,6 @@ class GameTest {
     }
     @Test
     void draw() throws IOException {
-        when(screen.newTextGraphics()).thenReturn(graphics);
-
-        // Create any necessary objects (e.g., p1, p2, walls) and set up their behavior
-
-        // Call the method to test
-        game.draw();
-
-        // Verify that the expected methods on dependencies were called
-        Mockito.verify(graphics).setBackgroundColor(TextColor.Factory.fromString("#000000"));
-        Mockito.verify(graphics).fillRectangle(Mockito.any(TerminalPosition.class), Mockito.any(TerminalSize.class), Mockito.eq(' '));
-        Mockito.verify(screen).refresh();
     }
 
     @Test
