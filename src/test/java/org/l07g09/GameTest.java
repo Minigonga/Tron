@@ -19,15 +19,4 @@ import java.io.IOException;
 import static org.mockito.Mockito.*;
 
 class GameTest {
-    @Test
-    void draw() throws IOException {
-    }
-
-    @Test
-    void collision() {
-    }
-
-    @Test
-    void run() {
-    }
 }
