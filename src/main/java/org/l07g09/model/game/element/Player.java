@@ -1,44 +1,45 @@
-package org.l07g09;
+package org.l07g09.model.game.element;
 
+
+import java.util.ArrayList;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import org.l07g09.Element;
+import org.l07g09.model.Position;
 
-import java.util.ArrayList;
 
 public class Player extends Element {
-    private ArrayList<Position> trail;
+    protected ArrayList<Trail> trails;
+
     private int direction;
+
     private boolean collide;
-    private String color;
+
     private String number;
+
     public Player(int x,int y, String color, String number){
-        super(x,y);
-        this.color = color;
-        this.trail = new ArrayList<>();
+        super(x,y, color);
+        this.trails = new ArrayList<>();
         this.collide=false;
         this.number = number;
     }
 
-    public ArrayList<Position> getTrail() {
-        return trail;
+    public ArrayList<Trail> getTrails() {
+        return trails;
     }
 
-    public void setTrail(ArrayList<Position> trail) {
-        this.trail = trail;
-    }
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString(color));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(new TerminalPosition(getPos().getX(), getPos().getY()), number);
-        for (Position p : trail) {
+        for (Trail trail : trails) {
             graphics.setBackgroundColor(TextColor.Factory.fromString(color));
             graphics.enableModifiers(SGR.BOLD);
-            graphics.putString(new TerminalPosition(p.getX(), p.getY()), " ");
+            graphics.putString(new TerminalPosition(trail.getPos().getX(), trail.getPos().getY()), " ");
         }
     }
+
     public void move() {
         byte right = 0;
         byte left = 1;
@@ -54,9 +55,11 @@ public class Player extends Element {
         } else if (direction == up) {
             pos = new Position(pos.getX(), pos.getY()-1);
         }
-        trail.add(position);
+        trails.add(new Trail(position.getX(),position.getY(),color));
     }
+
     public int getDirection() {return direction;}
+
     public void setDirection(int direction) {this.direction = direction;}
 
     public boolean getCollide() {

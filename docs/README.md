@@ -1,6 +1,6 @@
 ## LDTS_709 - TRON
 
-Vamos fazer o trabalho sobre o Tron, um jogo em que dois jogadores controlam uma moto e deixam 1 rastro pela área de jogo. Se alguém tocar no rastro (incluindo o seu), perde.
+Vamos fazer o trabalho sobre o [Tron](https://en.wikipedia.org/wiki/Tron_(video_game)), um jogo em que dois jogadores controlam uma moto e deixam 1 rastro pela área de jogo. Se alguém tocar no rastro (incluindo o seu), perde.
 
 Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo Pinto (up202204943@fe.up.pt), Manuel Mo (up202205000@fe.up.pt) para LDTS 2023/2024.
 
@@ -14,41 +14,41 @@ Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo P
 
 ### PLANNED FEATURES
 
-- **Gigantes** - Monstros que estão no quadro de jogo que vão fazer desaparecer o rastro se houver na posição onde estão ou eliminam os jogadores.
 - **Salto** - Um jogador pode saltar evitando assim um rastro à sua frente.
 - **Boost** - Um jogador pode andar numa velocidade mais rápida durante um curto período de tempo.
 
-### UML
-![UMLTRON.png](Images%2FUMLTRON.png)
+### UML CLASS DIAGRAM
+
+![uml-tron.png](Images%2Fuml-tron.png)
 
 ### DESIGN
 
 
-#### MOVIMENTO
+#### ELEMENT
 
 **Problem in Context**
 
-Não conseguimos mover o jogador constantemente sem pressionar nova tecla, isto é, o jogado fica parado até o utilizador clicar numa tecla.
+Temos várias classes que têm variáveis e funções iguais (Wall, Player, Trail).
 
 **The Pattern**
 
-Utilizamos o "KeyStroke key = terminal.pollInput();". Graças a esta implementação, a moto do jogador consegue mover-se infinitamente.
+Criamos uma classe abstrata "Element" que engloba essas três classes.
 
 **Implementation**
 
-A implementação foi feita na classe *Game*, dentro da função *run*.
+A seguinte imagem mostra como está criada a classe "Element".
 
-![runmove.png](Images/runmove.png)
+![element.png](Images%2Felement.png)
 
-Necessitamos também de adicionar algumas funções na classe *Player* para podermos movimentar a moto do jogador.
+As proximas imagens mostram como ficaram as subclasses.
 
-![playermove.png](Images/playermove.png)
+![wall.png](Images%2Fwall.png)
+![player.png](Images%2Fplayer.png)
+![trail.png](Images%2Ftrail.png)
 
 **Consequences**
 
-O uso desta implementação teve como benefício:
-
-- A constante movimentação da moto do jogador
+Mais fácil para alguém que não escreveu o código de entendê-lo, uma vez que fica mais simples com a classe abstrata.
 
 #### KNOWN CODE SMELLS
 

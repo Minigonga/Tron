@@ -1,7 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import org.l07g09.Player;
-import org.l07g09.Position;
+import org.l07g09.model.element.Player;
+import org.l07g09.model.Position;
 
 
 import static org.mockito.Mockito.*;

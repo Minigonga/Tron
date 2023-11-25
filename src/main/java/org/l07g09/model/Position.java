@@ -1,4 +1,4 @@
-package org.l07g09;
+package org.l07g09.model;
 
 public class Position {
     private int x;

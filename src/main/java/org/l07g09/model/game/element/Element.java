@@ -1,16 +1,27 @@
-package org.l07g09;
+package org.l07g09.model.game.element;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
+import org.l07g09.model.Position;
 
 public abstract class Element {
+
     protected Position pos;
-    Element(int x, int y){
+
+    protected String color;
+
+    protected Element(int x, int y, String color){
+
         pos=new Position(x,y);
+
+        this.color=color;
     }
+
     public abstract void draw(TextGraphics graphics);
+
     public void setPos(Position p){
         pos=p;
     }
+
     public Position getPos(){
         return pos;
     }
