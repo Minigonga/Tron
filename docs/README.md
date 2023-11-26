@@ -108,7 +108,7 @@ Podemos fazer relações entre objetos enquanto o programa está a correr.
 
 **Problem in Context**
 
-Ao desenvolver o nosso jogo, percebemos que iria haver uma grande quantidade de estados em que o nosso programa se poderia encontrar. E por isso estavamos com algumas dificuldades a mudar o estado do nosso programa.
+Ao desenvolver o nosso jogo, percebemos que iria haver uma grande quantidade de estados em que o nosso programa poderia se encontrar e, por isso, estavamos com algumas dificuldades a mudar o estado do nosso programa.
 
 **The Pattern**
 
@@ -116,11 +116,15 @@ Para resolver este problema nós usamos o State pattern, com ele conseguimos sep
 
 **Implementation**
 
+![state-pattern.png](images%2Fstate-pattern.png)
 
+(O código ainda não foi implementado).
 
 **Consequences**
 
-Podemos fazer relações entre objetos enquanto o programa está a correr.
+- Organiza o código de vários estados por classes.
+- Torna mais fácil adicionar novos estados, não tendo de mudar qualquer tipo de código.
+
 #### KNOWN CODE SMELLS
 
 > This section should describe 3 to 5 different code smells that you have identified in your current implementation.
