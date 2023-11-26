@@ -90,29 +90,33 @@ Podemos fazer relações entre objetos enquanto o programa está a correr.
 
 **Problem in Context**
 
-Nós precisavamos de avisar os objetos que se leu um input, para poderem agir.
+Quando queremos atualizar algum elemento, temos de usar funções de terceiros o que torna o código mais pesado e mais díficil de perceber. Além disso, é mais complexo criar testes unitários.
 
 **The Pattern**
 
-Para resolver este problema nós usamos o Factory pattern, neste pattern definimos uma interface para criar objetos, deixando as subclasses decidir que classes são para serem iniciadas.
+Para resolver este problema nós usamos o Factory pattern, neste pattern definimos uma interface para criar objetos, deixando as subclasses decidir que classes são para serem inicializadas.
 
 **Implementation**
 
+![factory-pattern.png](images%2Ffactory-pattern.png)
 
+(O código ainda não foi implementado).
 
 **Consequences**
 
-Podemos fazer relações entre objetos enquanto o programa está a correr.
+- Podemos adicionar algo ao código sem ter de mudar o que já temos/tínhamos.
+- Os objetos são criados numa classe específica e são separadamente atualizados.
+- Faz com que o código seja mais fácil de atualizar.
 
 ### ESTADOS DO PROGRAMA
 
 **Problem in Context**
 
-Ao desenvolver o nosso jogo, percebemos que iria haver uma grande quantidade de estados em que o nosso programa poderia se encontrar e, por isso, estavamos com algumas dificuldades a mudar o estado do nosso programa.
+Ao desenvolver o nosso jogo, percebemos que iria haver uma grande quantidade de estados em que o nosso programa poderia encontrar-se e, por isso, estávamos com algumas dificuldades em mudar o estado do nosso programa.
 
 **The Pattern**
 
-Para resolver este problema nós usamos o State pattern, com ele conseguimos separar todos os estados em classes individuais, implementando mais facilmente os seus métodos.
+Para resolver este problema nós usamos o State pattern. Com ele conseguimos separar todos os estados em classes individuais, implementando mais facilmente os seus métodos.
 
 **Implementation**
 
@@ -123,7 +127,7 @@ Para resolver este problema nós usamos o State pattern, com ele conseguimos sep
 **Consequences**
 
 - Organiza o código de vários estados por classes.
-- Torna mais fácil adicionar novos estados, não tendo de mudar qualquer tipo de código.
+- Torna mais fácil adicionar novos estados, não tendo a necessidade de mudar qualquer tipo de código.
 
 #### KNOWN CODE SMELLS
 
