@@ -19,10 +19,34 @@ Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo P
 - **Score** - Mostra as partidas ganhas por cada jogador por exemplo (P1 2-3 P2).
 - **Menu** - Quando inciar o programa aparece o menu que vai ter como opções (Start game, instructions e Exit game).
 - **Timer** - Durante o jogo aparece há quanto tempo o jogo está a decorrer.
+- **Instructions** - Menu que explica como se joga o jogo e diz quais são os controlos para o conseguir jogar.
 
 ### UML CLASS DIAGRAM
 
 ![uml-tron.png](Images%2Fuml-tron.png)
+
+### MOCKUPS
+
+Menu
+
+![menu.png](images%2Fmenu.png)
+
+Instructions menu
+
+![instructions-menu.png](images%2Finstructions-menu.png)
+
+Tela do jogo
+
+![game1.png](images%2Fgame1.png)
+
+Salto da moto
+
+![game2.png](images%2Fgame2.png)
+
+Boost da moto
+
+![game3.png](images%2Fgame3.png)
+
 
 ### DESIGN
 
