@@ -78,7 +78,7 @@ Para resolver este problema nós usamos o MVC pattern. Este pattern separa o dis
 
 **Problem in Context**
 
-Nós precisavamos de avisar os objetos que se leu um input, para poderem agir.
+Nós precisavamos de avisar os objetos de que se leu um input, para poderem agir.
 
 **The Pattern**
 
@@ -86,10 +86,13 @@ Para resolver este problema nós usamos o Observer pattern, pattern este que avi
 
 **Implementation**
 
+![observer-pattern.png](images%2Fobserver-pattern.png)
+
+(O código ainda não foi implementado).
 
 **Consequences**
 
-Podemos fazer relações entre objetos enquanto o programa está a correr.
+- Podemos fazer relações entre objetos enquanto o programa está a correr.
 
 ### CRIAÇÃO DE OBJETOS
 
