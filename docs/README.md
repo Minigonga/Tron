@@ -29,26 +29,25 @@ A aplicação onde estavamos a criar o diagrama em UML não tinha setas como as 
 
 ### MOCKUPS
 
-Menu
+Menu:
 
 ![menu.png](images%2Fmenu.png)
 
-Instructions menu
+Instructions menu:
 
 ![instructions-menu.png](images%2Finstructions-menu.png)
 
-Tela do jogo
+Tela do jogo:
 
 ![game1.png](images%2Fgame1.png)
 
-Salto da moto
+Salto da moto:
 
 ![game2.png](images%2Fgame2.png)
 
-Boost da moto
+Boost da moto:
 
 ![game3.png](images%2Fgame3.png)
-
 
 ### DESIGN
 
@@ -102,7 +101,7 @@ Quando queremos atualizar algum elemento, temos de usar funções de terceiros o
 
 **The Pattern**
 
-Para resolver este problema nós usamos o Factory pattern, neste pattern definimos uma interface para criar objetos, deixando as subclasses decidir que classes são para serem inicializadas.
+Para resolver este problema nós usamos o Factory pattern. Neste pattern definimos uma interface para criar objetos, deixando as subclasses decidir que classes são para serem inicializadas.
 
 **Implementation**
 
@@ -120,7 +119,7 @@ Para resolver este problema nós usamos o Factory pattern, neste pattern definim
 
 **Problem in Context**
 
-Ao desenvolver o nosso jogo, percebemos que iria haver uma grande quantidade de estados em que o nosso programa poderia encontrar-se e, por isso, estávamos com algumas dificuldades em mudar o estado do nosso programa.
+Ao desenvolver o nosso jogo, percebemos que iria haver uma grande quantidade de estados em que o nosso programa poderia encontrar e, por isso, estávamos com algumas dificuldades em mudar o estado do nosso programa.
 
 **The Pattern**
 
