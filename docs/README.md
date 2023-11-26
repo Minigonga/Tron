@@ -23,6 +23,8 @@ Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo P
 
 ### UML CLASS DIAGRAM
 
+A aplicação onde estavamos a criar o diagrama em UML não tinha setas como as "uni-directional" e, por isso, usamos triângulos para essas ligações (dá para perceber por ter um número ou * ao lado do mesmo).
+
 ![uml-tron.png](Images%2Fuml-tron.png)
 
 ### MOCKUPS
@@ -54,19 +56,23 @@ Boost da moto
 
 **Problem in Context**
 
-Quando estavamos a organizar o trabalho, percebemos que o código podia se tornar muito confuso sem uma boa estrutura.
+Quando estávamos a organizar o trabalho, percebemos que o código podia se tornar muito confuso sem uma boa estrutura.
 
 **The Pattern**
 
-Para resolver este problema nós usamos o MVC pattern. Este pattern separa o display do jogo e
+Para resolver este problema nós usamos o MVC pattern. Este pattern separa o display do jogo e a sua forma de raciocinar.
 
 **Implementation**
 
+![mvc-pattern.png](images%2Fmvc-pattern.png)
 
+(O código ainda não foi implementado).
 
 **Consequences**
 
-
+- Torna o código simples de ler, ajudando-nos a descobrir erros, ao logo do desenvolvimento do jogo, bem como corrigi-los.
+- Mais fácil de ajustar o código, se quisermos mudar um novo controlo, podemos facilmente atualizar o Controller.
+- Se quisermos adicionar uma feature, isso será mais fácil, uma vez que o código vai estar bem organizado. Se for adicionar, por exemplo, um controlo é só criar um novo Controller.
 
 ### INPUTS
 
@@ -79,7 +85,6 @@ Nós precisavamos de avisar os objetos que se leu um input, para poderem agir.
 Para resolver este problema nós usamos o Observer pattern, pattern este que avisa vários objetos sobre algo que tenha ocorrido.
 
 **Implementation**
-
 
 
 **Consequences**
