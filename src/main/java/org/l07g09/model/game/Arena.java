@@ -87,10 +87,8 @@ public class Arena {
         screen.refresh();
     }
     public void collision(){
-        for (Wall wall : walls){
-            if (p1.getPos().equals(wall.getPos())){p1.setCollide(true);}
-            if (p2.getPos().equals(wall.getPos())){p2.setCollide(true);}
-        }
+        if (p1.getPos().getX()<1 || p1.getPos().getX()>189 || p1.getPos().getY()<1 || p1.getPos().getY()>189) p1.setCollide(true);
+        if (p2.getPos().getX()<1 || p2.getPos().getX()>189 || p2.getPos().getY()<1 || p2.getPos().getY()>189) p2.setCollide(true);
         for (Trail trail: p1.getTrails()){
             Position position = trail.getPos();
             if (p1.getPos().equals(position)){p1.setCollide(true);}
