@@ -26,33 +26,77 @@ Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo P
 
 ### DESIGN
 
-
-#### ELEMENT
+### ORGANIZAÇÃO DO CÓDIGO
 
 **Problem in Context**
 
-Temos várias classes que têm variáveis e funções iguais (Wall, Player, Trail).
+Quando estavamos a organizar o trabalho, percebemos que o código podia se tornar muito confuso sem uma boa estrutura.
 
 **The Pattern**
 
-Criamos uma classe abstrata "Element" que engloba essas três classes.
+Para resolver este problema nós usamos o MVC pattern. Este pattern separa o display do jogo e
 
 **Implementation**
 
-A seguinte imagem mostra como está criada a classe "Element".
 
-![element.png](Images%2Felement.png)
-
-As proximas imagens mostram como ficaram as subclasses.
-
-![wall.png](Images%2Fwall.png)
-![player.png](Images%2Fplayer.png)
-![trail.png](Images%2Ftrail.png)
 
 **Consequences**
 
-Mais fácil para alguém que não escreveu o código de entendê-lo, uma vez que fica mais simples com a classe abstrata.
 
+
+### INPUTS
+
+**Problem in Context**
+
+Nós precisavamos de avisar os objetos que se leu um input, para poderem agir.
+
+**The Pattern**
+
+Para resolver este problema nós usamos o Observer pattern, pattern este que avisa vários objetos sobre algo que tenha ocorrido.
+
+**Implementation**
+
+
+
+**Consequences**
+
+Podemos fazer relações entre objetos enquanto o programa está a correr.
+
+### CRIAÇÃO DE OBJETOS
+
+**Problem in Context**
+
+Nós precisavamos de avisar os objetos que se leu um input, para poderem agir.
+
+**The Pattern**
+
+Para resolver este problema nós usamos o Factory pattern, neste pattern definimos uma interface para criar objetos, deixando as subclasses decidir que classes são para serem iniciadas.
+
+**Implementation**
+
+
+
+**Consequences**
+
+Podemos fazer relações entre objetos enquanto o programa está a correr.
+
+### ESTADOS DO PROGRAMA
+
+**Problem in Context**
+
+Ao desenvolver o nosso jogo, percebemos que iria haver uma grande quantidade de estados em que o nosso programa se poderia encontrar. E por isso estavamos com algumas dificuldades a mudar o estado do nosso programa.
+
+**The Pattern**
+
+Para resolver este problema nós usamos o State pattern, com ele conseguimos separar todos os estados em classes individuais, implementando mais facilmente os seus métodos.
+
+**Implementation**
+
+
+
+**Consequences**
+
+Podemos fazer relações entre objetos enquanto o programa está a correr.
 #### KNOWN CODE SMELLS
 
 > This section should describe 3 to 5 different code smells that you have identified in your current implementation.
