@@ -9,6 +9,8 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import org.l07g09.model.Position;
+import org.l07g09.model.game.element.Player;
+import org.l07g09.model.game.element.Trail;
 
 
 import java.awt.*;
@@ -57,24 +59,24 @@ public class LanternaGUI implements GUI {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
 
-        Font loadedFont = font.deriveFont(Font.PLAIN, 25);
+        Font loadedFont = font.deriveFont(Font.PLAIN, 4);
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
         return fontConfig;
     }
 
     @Override
-    public void drawPlayer(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'H', "#FFD700");
+    public void drawPlayer(Player player) {
+        drawCharacter(player.getPos().getX(), player.getPos().getY(),player.getNumber(), player.getColor());
     }
 
     @Override
     public void drawWall(Position position) {
-        drawCharacter(position.getX(), position.getY(), '#', "#3333FF");
+        drawCharacter(position.getX(), position.getY(), ' ', "#3333FF");
     }
 
     @Override
-    public void drawTrail(Position position) {
-        drawCharacter(position.getX(), position.getY(), '@', "#CC0000");
+    public void drawTrail(Trail trail) {
+        drawCharacter(trail.getPos().getX(), trail.getPos().getY(), ' ', trail.getColor());
     }
 
     @Override

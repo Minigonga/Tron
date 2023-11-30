@@ -17,11 +17,11 @@ public class PlayerTest {
     private Player player;
     @BeforeEach
     public void setUp() {
-        player = new Player(0,0,"#FFFFFF", "1");
+        player = new Player(0,0,"#FFFFFF", '1');
     }
     @Test
     public void Player() {
-        Player p = new Player(0,0,"#FFFFFF", "1");
+        Player p = new Player(0,0,"#FFFFFF", '1');
         assertTrue(p.getPos().equals(new Position(0,0)));
         assertEquals("#FFFFFF", p.getColor());
     }
