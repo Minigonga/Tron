@@ -46,13 +46,13 @@ public class Player extends Element {
         byte up = 3;
         Position position = pos;
         if (direction == right) {
-            pos = new Position(pos.getX()+1, pos.getY());
+            moveRight();
         } else if (direction == left) {
-            pos = new Position(pos.getX()-1, pos.getY());
+            moveLeft();
         } else if (direction == down) {
-            pos = new Position(pos.getX(), pos.getY()+1);
+            moveDown();
         } else if (direction == up) {
-            pos = new Position(pos.getX(), pos.getY()-1);
+            moveUp();
         }
         trails.add(new Trail(position.getX(),position.getY(),color));
     }
@@ -71,4 +71,8 @@ public class Player extends Element {
 
     public int getBoostCount() {return boostCount;}
     public char getNumber() {return number;}
+    public void moveRight() {pos = new Position(pos.getX()+1, pos.getY());}
+    public void moveLeft() {pos = new Position(pos.getX()-1, pos.getY());}
+    public void moveUp() {pos = new Position(pos.getX(), pos.getY()-1);}
+    public void moveDown() {pos = new Position(pos.getX(), pos.getY()+1);}
 }
