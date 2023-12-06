@@ -71,7 +71,7 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawBlock(Block block) {
-        drawCharacter(block.getPos(), ' ', "#3333FF");
+        drawCharacter(block.getPos(), ' ', block.getColor());
     }
 
     @Override
