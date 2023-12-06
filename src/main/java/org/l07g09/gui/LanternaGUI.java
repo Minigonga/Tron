@@ -11,6 +11,7 @@ import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import org.l07g09.model.Position;
 import org.l07g09.model.game.element.Player;
 import org.l07g09.model.game.element.Trail;
+import org.l07g09.model.game.element.Wall;
 
 
 import java.awt.*;
@@ -66,17 +67,17 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawPlayer(Player player) {
-        drawCharacter(player.getPos().getX(), player.getPos().getY(),player.getNumber(), player.getColor());
+        drawCharacter(player.getPos(),player.getNumber(), player.getColor());
     }
 
     @Override
-    public void drawWall(Position position) {
-        drawCharacter(position.getX(), position.getY(), ' ', "#3333FF");
+    public void drawWall(Wall wall) {
+        drawCharacter(wall.getPos(), ' ', "#3333FF");
     }
 
     @Override
     public void drawTrail(Trail trail) {
-        drawCharacter(trail.getPos().getX(), trail.getPos().getY(), ' ', trail.getColor());
+        drawCharacter(trail.getPos(), ' ', trail.getColor());
     }
 
     @Override
@@ -86,10 +87,10 @@ public class LanternaGUI implements GUI {
         tg.putString(position.getX(), position.getY(), text);
     }
 
-    private void drawCharacter(int x, int y, char c, String color) {
+    private void drawCharacter(Position p, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString(color));
-        tg.putString(x, y + 1, "" + c);
+        tg.putString(p.getX(), p.getY() + 1, "" + c);
     }
 
     @Override

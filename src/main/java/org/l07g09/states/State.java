@@ -2,6 +2,7 @@ package org.l07g09.states;
 
 import org.l07g09.Game;
 import org.l07g09.gui.GUI;
+import org.l07g09.viewer.Viewer;
 
 import java.io.IOException;
 
@@ -15,10 +16,10 @@ public abstract class State<T> {
         this.viewer = getViewer();/*
         this.controller = getController();*/
     }
-    /*
+
     protected abstract Viewer<T> getViewer();
 
-    protected abstract Controller<T> getController();*/
+    //protected abstract Controller<T> getController();
 
     public T getModel() {
         return model;
