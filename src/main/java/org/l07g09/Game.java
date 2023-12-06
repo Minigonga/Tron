@@ -21,11 +21,6 @@ public class Game {
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException, InterruptedException {
         new Game().start();
     }
-
-    public void setState(State state) {
-        this.state = state;
-    }
-
     private void start() throws InterruptedException, IOException {
         int FPS = 20;
         int frameTime = 1000 / FPS;
@@ -37,4 +32,9 @@ public class Game {
         }
         gui.close();
     }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
 }
