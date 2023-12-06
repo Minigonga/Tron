@@ -2,16 +2,12 @@ package org.l07g09.model.game.element;
 
 
 import java.util.ArrayList;
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
 import org.l07g09.model.Position;
 
 
 public class Player extends Element {
     private int boostCount;
-    protected ArrayList<Trail> trails;
+    protected ArrayList<Block> trails;
 
     private int direction = -1;
 
@@ -27,7 +23,7 @@ public class Player extends Element {
         this.boostCount = 0;
     }
 
-    public ArrayList<Trail> getTrails() {
+    public ArrayList<Block> getTrails() {
         return trails;
     }
 
@@ -54,7 +50,7 @@ public class Player extends Element {
         } else if (direction == up) {
             moveUp();
         }
-        trails.add(new Trail(position.getX(),position.getY(),color));
+        trails.add(new Block(position.getX(),position.getY(),color));
     }
 
     public int getDirection() {return direction;}
