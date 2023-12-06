@@ -12,9 +12,4 @@ public class Wall extends Element {
         super (x,y, color);
     }
 
-    public void draw(TextGraphics graphics){
-        graphics.setBackgroundColor(TextColor.Factory.fromString(color));
-        graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(getPos().getX(), getPos().getY()), " ");
-    }
 }

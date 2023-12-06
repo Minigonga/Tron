@@ -9,6 +9,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import org.l07g09.gui.LanternaGUI;
 import org.l07g09.model.Position;
 import org.l07g09.model.game.element.Player;
 import org.l07g09.model.game.element.Trail;
@@ -28,36 +29,13 @@ public class Arena {
     final int height;
     final int width;
     final List<Wall> walls;
-    final Terminal terminal;
-    final Screen screen;
+    final LanternaGUI gui;
     public Arena() throws IOException, FontFormatException, URISyntaxException {
+        this.gui = new LanternaGUI(190,240);
         height = 190;
         width = 240;
-        URL resource = getClass().getClassLoader().getResource("square.ttf");
-        File fontFile = new File(resource.toURI());
-        Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
-
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(font);
-
-        DefaultTerminalFactory factory = new DefaultTerminalFactory();
-
-        Font loadedFont = font.deriveFont(Font.PLAIN, 4);
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        factory.setTerminalEmulatorFontConfiguration(fontConfig);
-        factory.setForceAWTOverSwing(true);
-        factory.setInitialTerminalSize(new TerminalSize(width, height));
-
-        terminal = factory.createTerminal();
-        screen = new TerminalScreen(terminal);
-        screen.setCursorPosition(null);   // we don't need a cursor
-        screen.startScreen();             // screens must be started
-        screen.doResizeIfNecessary();     // resize screen if necessary
-
-        screen.refresh();
-
-        p1 = new Player(55,30,"#FFFFFF", "1");
-        p2 = new Player(100,40,"#987654", "2");
+        p1 = new Player(55,30,"#FFFFFF", '1');
+        p2 = new Player(100,40,"#987654", '2');
         this.walls = createWalls();
     }
 
@@ -76,15 +54,22 @@ public class Arena {
     }
 
     public void draw() throws IOException{
-        TextGraphics graphics = screen.newTextGraphics();
+    /*    TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
-        p1.draw(graphics);
-        p2.draw(graphics);
-        for (Wall wall: walls){
-            wall.draw(graphics);
+
+     */
+        gui.drawPlayer(p1);
+        gui.drawPlayer(p2);
+        for (Trail trail: p1.getTrails()){
+            gui.drawTrail(trail);
         }
-        screen.refresh();
+        for (Trail trail: p2.getTrails()){
+            gui.drawTrail(trail);
+        }
+        for (Wall wall: walls){
+            gui.drawWall(wall.getPos());
+        }
     }
     public void collision(){
         if (p1.getPos().getX()<1 || p1.getPos().getX()>width-1 || p1.getPos().getY()<1 || p1.getPos().getY()>height-1) p1.setCollide(true);
@@ -146,7 +131,7 @@ public class Arena {
 
                     }
                     else if (key.getKeyType() == KeyType.Escape) {
-                        screen.close();
+                        gui.close();
                     } else if (key.getKeyType()==KeyType.EOF) {
                         break;
                     }

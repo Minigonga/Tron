@@ -14,8 +14,6 @@ public abstract class Element {
         this.color = color;
     }
 
-    public abstract void draw(TextGraphics graphics);
-
     public void setPos(Position p){
         pos=p;
     }

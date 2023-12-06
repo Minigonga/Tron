@@ -17,9 +17,9 @@ public class Player extends Element {
 
     private boolean collide;
 
-    private String number;
+    private char number;
 
-    public Player(int x,int y, String color, String number){
+    public Player(int x,int y, String color, char number){
         super(x,y, color);
         this.trails = new ArrayList<>();
         this.collide=false;
@@ -31,16 +31,6 @@ public class Player extends Element {
         return trails;
     }
 
-    public void draw(TextGraphics graphics) {
-        graphics.setForegroundColor(TextColor.Factory.fromString(color));
-        graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(getPos().getX(), getPos().getY()), number);
-        for (Trail trail : trails) {
-            graphics.setBackgroundColor(TextColor.Factory.fromString(color));
-            graphics.enableModifiers(SGR.BOLD);
-            graphics.putString(new TerminalPosition(trail.getPos().getX(), trail.getPos().getY()), " ");
-        }
-    }
     public void boost() {
         if (boostCount<3) {
             for (int i = 0; i <7; i++) {
@@ -56,13 +46,13 @@ public class Player extends Element {
         byte up = 3;
         Position position = pos;
         if (direction == right) {
-            pos = new Position(pos.getX()+1, pos.getY());
+            moveRight();
         } else if (direction == left) {
-            pos = new Position(pos.getX()-1, pos.getY());
+            moveLeft();
         } else if (direction == down) {
-            pos = new Position(pos.getX(), pos.getY()+1);
+            moveDown();
         } else if (direction == up) {
-            pos = new Position(pos.getX(), pos.getY()-1);
+            moveUp();
         }
         trails.add(new Trail(position.getX(),position.getY(),color));
     }
@@ -80,4 +70,9 @@ public class Player extends Element {
     }
 
     public int getBoostCount() {return boostCount;}
+    public char getNumber() {return number;}
+    public void moveRight() {pos = new Position(pos.getX()+1, pos.getY());}
+    public void moveLeft() {pos = new Position(pos.getX()-1, pos.getY());}
+    public void moveUp() {pos = new Position(pos.getX(), pos.getY()-1);}
+    public void moveDown() {pos = new Position(pos.getX(), pos.getY()+1);}
 }

@@ -10,10 +10,4 @@ public class Trail extends Element {
     public Trail(int x, int y, String color) {
         super(x, y, color);
     }
-    @Override
-    public void draw(TextGraphics graphics) {
-        graphics.setBackgroundColor(TextColor.Factory.fromString(color));
-        graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(pos.getX(), pos.getY()), " ");
-    }
 }
