@@ -1,25 +1,16 @@
 package org.l07g09.model.game;
 
-import com.googlecode.lanterna.*;
-import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import org.l07g09.gui.LanternaGUI;
 import org.l07g09.model.Position;
+import org.l07g09.model.game.element.Block;
 import org.l07g09.model.game.element.Player;
-import org.l07g09.model.game.element.Trail;
-import org.l07g09.model.game.element.Wall;
+
 
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +19,7 @@ public class Arena {
     final Player p2;
     final int height;
     final int width;
-    final List<Wall> walls;
+    final List<Block> walls;
     final LanternaGUI gui;
     public Arena() throws IOException, FontFormatException, URISyntaxException {
         this.gui = new LanternaGUI(190,240);
@@ -39,21 +30,21 @@ public class Arena {
         this.walls = createWalls();
     }
 
-    private List<Wall> createWalls() {
+    private List<Block> createWalls() {
         String color = "#0000FF";
-        List<Wall> walls = new ArrayList<>();
+        List<Block> walls = new ArrayList<>();
         for (int c = 0; c < width -50; c++) {
-            walls.add(new Wall(c, 0, color));
-            walls.add(new Wall(c, height - 1, color));
+            walls.add(new Block(c, 0, color));
+            walls.add(new Block(c, height - 1, color));
         }
         for (int r = 1; r < height - 1; r++) {
-            walls.add(new Wall(0, r, color));
-            walls.add(new Wall(width - 51, r, color));
+            walls.add(new Block(0, r, color));
+            walls.add(new Block(width - 51, r, color));
         }
         return walls;
     }
 
-    public List<Wall> getWalls(){return this.walls;}
+    public List<Block> getWalls(){return this.walls;}
 
     public Player getPlayer1(){return this.p1;}
 
@@ -63,12 +54,12 @@ public class Arena {
     public void collision(){
         if (p1.getPos().getX()<1 || p1.getPos().getX()>width-1 || p1.getPos().getY()<1 || p1.getPos().getY()>height-1) p1.setCollide(true);
         if (p2.getPos().getX()<1 || p2.getPos().getX()>width-1 || p2.getPos().getY()<1 || p2.getPos().getY()>height-1) p2.setCollide(true);
-        for (Trail trail: p1.getTrails()){
+        for (Block trail: p1.getTrails()){
             Position position = trail.getPos();
             if (p1.getPos().equals(position)){p1.setCollide(true);}
             if (p2.getPos().equals(position)){p2.setCollide(true);}
         }
-        for (Trail trail: p2.getTrails()){
+        for (Block trail: p2.getTrails()){
             Position position = trail.getPos();
             if (p1.getPos().equals(position)){p1.setCollide(true);}
             if (p2.getPos().equals(position)){p2.setCollide(true);}
@@ -87,7 +78,6 @@ public class Arena {
         long i = 0;
         p1.setDirection(right);
         p2.setDirection(up);
-        draw();
         while (true) {
             i++;
             if (i%20000000 == 0) {
@@ -133,7 +123,6 @@ public class Arena {
                 if (p1.getCollide() || p2.getCollide()) {
                     break;
                 }
-                draw();
             }
         }
         if (p1.getCollide()){

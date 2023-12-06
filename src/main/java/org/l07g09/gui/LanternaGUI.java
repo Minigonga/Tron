@@ -9,9 +9,8 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import org.l07g09.model.Position;
+import org.l07g09.model.game.element.Block;
 import org.l07g09.model.game.element.Player;
-import org.l07g09.model.game.element.Trail;
-import org.l07g09.model.game.element.Wall;
 
 
 import java.awt.*;
@@ -71,13 +70,8 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawWall(Wall wall) {
-        drawCharacter(wall.getPos(), ' ', "#3333FF");
-    }
-
-    @Override
-    public void drawTrail(Trail trail) {
-        drawCharacter(trail.getPos(), ' ', trail.getColor());
+    public void drawBlock(Block block) {
+        drawCharacter(block.getPos(), ' ', "#3333FF");
     }
 
     @Override
