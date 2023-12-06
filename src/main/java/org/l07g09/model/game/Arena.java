@@ -53,24 +53,13 @@ public class Arena {
         return walls;
     }
 
-    public void draw() throws IOException{
-    /*    TextGraphics graphics = screen.newTextGraphics();
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
+    public List<Wall> getWalls(){return this.walls;}
 
-     */
-        gui.drawPlayer(p1);
-        gui.drawPlayer(p2);
-        for (Trail trail: p1.getTrails()){
-            gui.drawTrail(trail);
-        }
-        for (Trail trail: p2.getTrails()){
-            gui.drawTrail(trail);
-        }
-        for (Wall wall: walls){
-            gui.drawWall(wall.getPos());
-        }
-    }
+    public Player getPlayer1(){return this.p1;}
+
+    public Player getPlayer2(){return this.p2;}
+
+
     public void collision(){
         if (p1.getPos().getX()<1 || p1.getPos().getX()>width-1 || p1.getPos().getY()<1 || p1.getPos().getY()>height-1) p1.setCollide(true);
         if (p2.getPos().getX()<1 || p2.getPos().getX()>width-1 || p2.getPos().getY()<1 || p2.getPos().getY()>height-1) p2.setCollide(true);
@@ -89,6 +78,7 @@ public class Arena {
             p2.setCollide(true);
         }
     }
+
     public void run() throws IOException{
         byte right = 0;
         byte left = 1;
