@@ -30,27 +30,10 @@ public class Player extends Element {
     public void boost() {
         if (boostCount<3) {
             for (int i = 0; i <7; i++) {
-                move();
+
             }
             boostCount++;
         }
-    }
-    public void move() {
-        byte right = 0;
-        byte left = 1;
-        byte down = 2;
-        byte up = 3;
-        Position position = pos;
-        if (direction == right) {
-            moveRight();
-        } else if (direction == left) {
-            moveLeft();
-        } else if (direction == down) {
-            moveDown();
-        } else if (direction == up) {
-            moveUp();
-        }
-        trails.add(new Block(position.getX(),position.getY(),color));
     }
 
     public int getDirection() {return direction;}

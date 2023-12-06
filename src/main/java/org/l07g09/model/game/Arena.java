@@ -71,54 +71,13 @@ public class Arena {
     }
 
     public void run() throws IOException{
-        byte right = 0;
-        byte left = 1;
-        byte down = 2;
-        byte up = 3;
         long i = 0;
-        p1.setDirection(right);
-        p2.setDirection(up);
+        p1.setDirection(0);
+        p2.setDirection(3);
         while (true) {
             i++;
             if (i%20000000 == 0) {
-                KeyStroke key = terminal.pollInput();
-                // Handle keyboard input
-                if (key != null) {
-                    if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='a' || key.getCharacter()=='A')) {
-                        if (p1.getDirection() != right) {p1.setDirection(left);}
-                    } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='d' || key.getCharacter()=='D')) {
-                        if (p1.getDirection() != left) {p1.setDirection(right);}
-                    } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='w' || key.getCharacter()=='W')) {
-                        if (p1.getDirection() != down) {p1.setDirection(up);}
-                    } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='s' || key.getCharacter()=='S')) {
-                        if (p1.getDirection() != up) {p1.setDirection(down);}
-                    } else if (key.getKeyType() == KeyType.Character && (key.getCharacter() == ' ')) {
-                        //p1.jump();
-                    } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='x' || key.getCharacter()=='X')) {
-                        p1.boost();
-                    } else if (key.getKeyType() == KeyType.ArrowLeft) {
-                        if (p2.getDirection() != right) {p2.setDirection(left);}
-                    } else if (key.getKeyType() == KeyType.ArrowRight) {
-                        if (p2.getDirection() != left) {p2.setDirection(right);}
-                    } else if (key.getKeyType() == KeyType.ArrowUp) {
-                        if (p2.getDirection() != down) {p2.setDirection(up);}
-                    } else if (key.getKeyType() == KeyType.ArrowDown) {
-                        if (p2.getDirection() != up) {p2.setDirection(down);}
-                    } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='l' || key.getCharacter()=='L')) {
-                        //p2.jump();
-                    } else if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='p' || key.getCharacter()=='P')) {
-                        p2.boost();
-
-                    }
-                    else if (key.getKeyType() == KeyType.Escape) {
-                        gui.close();
-                    } else if (key.getKeyType()==KeyType.EOF) {
-                        break;
-                    }
-                }
-                p1.move();
                 collision();
-                p2.move();
                 collision();
                 if (p1.getCollide() || p2.getCollide()) {
                     break;
@@ -136,6 +95,5 @@ public class Arena {
         else {
             System.out.println("P1 WON");
         }
-        screen.close();
     }
 }
