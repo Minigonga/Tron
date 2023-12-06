@@ -30,7 +30,7 @@ public class Player extends Element {
     public void boost() {
         if (boostCount<3) {
             for (int i = 0; i <7; i++) {
-                move();
+
             }
             boostCount++;
         }
