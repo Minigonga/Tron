@@ -25,6 +25,13 @@ public class Position {
         this.y = y;
     }
 
+    public Position getNextPos(int direction) {
+        if (direction == 0) {return getUp();}
+        if (direction == 1) {return getRight();}
+        if (direction == 2) {return getDown();}
+        if (direction == 3) {return getLeft();}
+        return null;
+    }
     public Position getLeft() {
         return new Position(x - 1, y);
     }
