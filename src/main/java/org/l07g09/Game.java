@@ -29,7 +29,7 @@ public class Game {
         int frameTime = 1000 / FPS;
         while (this.state != null) {
             long startTime = System.currentTimeMillis();
-            //state.step(this, gui, startTime);
+            state.step(this, gui, startTime);
             long sleepTime = frameTime - System.currentTimeMillis() - startTime;
             if (sleepTime > 0) Thread.sleep(sleepTime);
         }
