@@ -77,9 +77,7 @@ public class Arena {
         while (true) {
             i++;
             if (i%20000000 == 0) {
-                p1.move();
                 collision();
-                p2.move();
                 collision();
                 if (p1.getCollide() || p2.getCollide()) {
                     break;
