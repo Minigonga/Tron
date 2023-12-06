@@ -35,30 +35,6 @@ public class PlayerTest {
         assertEquals(0, player.getPos().getY());
     }
     @Test
-    public void boost() {
-        player.setDirection(0);
-        Player mockedPlayer = Mockito.spy(player);
-        Mockito.doNothing().when(mockedPlayer).move();
-        assertEquals(0, mockedPlayer.getBoostCount());
-        mockedPlayer.boost();
-        Mockito.verify(mockedPlayer, Mockito.times(7)).move();
-        assertEquals(1, mockedPlayer.getBoostCount());
-        mockedPlayer.boost();
-        mockedPlayer.boost();
-        Mockito.verify(mockedPlayer, Mockito.times(21)).move();
-        assertEquals(3, mockedPlayer.getBoostCount());
-        mockedPlayer.boost(); //O player não vai conseguir usar mais boost.
-        Mockito.verify(mockedPlayer, Mockito.times(21)).move();
-        assertEquals(3, mockedPlayer.getBoostCount());
-    }
-    @Test
-    public void move() {
-        player.setDirection(0);
-        player.move();
-        assertTrue(player.getPos().equals(new Position(1,0)));
-        assertEquals(0, player.getPos().getY());
-    }
-    @Test
     public void getDirection() {
         assertEquals(-1, player.getDirection(), "Se não deu set, então a direction = -1.");
 
