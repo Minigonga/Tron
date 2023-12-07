@@ -34,7 +34,6 @@ public class ArenaBuilder {
         }
         return walls;
     }
-
     public Player createPlayer1() {
         return new Player(55,30,"#FFFFFF", '1', 2);
     }
