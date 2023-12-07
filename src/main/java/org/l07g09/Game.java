@@ -1,7 +1,8 @@
 package org.l07g09;
 
 import org.l07g09.gui.LanternaGUI;
-import org.l07g09.model.game.Arena;
+import org.l07g09.model.game.arena.Arena;
+import org.l07g09.model.game.arena.ArenaBuilder;
 import org.l07g09.states.GameState;
 import org.l07g09.states.State;
 
@@ -14,8 +15,8 @@ public class Game {
     private State state;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
-        this.gui = new LanternaGUI(20, 20);
-        this.state = new GameState(new Arena());
+        this.gui = new LanternaGUI(240, 190);
+        this.state = new GameState(new ArenaBuilder().createArena());
     }
 
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException, InterruptedException {
