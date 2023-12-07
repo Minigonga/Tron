@@ -15,7 +15,7 @@ public class Game {
     private State state;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
-        this.gui = new LanternaGUI(240, 190);
+        this.gui = new LanternaGUI(280, 190);
         this.state = new GameState(new ArenaBuilder().createArena());
     }
 
@@ -28,7 +28,7 @@ public class Game {
         int i = 0;
         while (this.state != null) {
             i++;
-            if(i%90000000==0) {
+            if(i%35000000==0) {
                 long startTime = System.currentTimeMillis();
                 state.step(this, gui, startTime);
                 long sleepTime = frameTime - System.currentTimeMillis() - startTime;
