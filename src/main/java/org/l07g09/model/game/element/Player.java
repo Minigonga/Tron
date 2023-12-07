@@ -15,12 +15,13 @@ public class Player extends Element {
 
     private char number;
 
-    public Player(int x,int y, String color, char number){
+    public Player(int x,int y, String color, char number, int dir){
         super(x,y, color);
         this.trails = new ArrayList<>();
         this.collide=false;
         this.number = number;
         this.boostCount = 0;
+        this.direction = dir;
     }
 
     public ArrayList<Block> getTrails() {
