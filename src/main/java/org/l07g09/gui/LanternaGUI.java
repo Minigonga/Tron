@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
+
 public class LanternaGUI implements GUI {
     private final Screen screen;
 
@@ -92,7 +93,9 @@ public class LanternaGUI implements GUI {
     public Action getNextAction() throws IOException {
         KeyStroke key = screen.pollInput();
         if (key == null) return Action.none;
-        if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='w' || key.getCharacter()=='W')) {return Action.up1;}
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='w' || key.getCharacter()=='W')) {
+            System.out.println("AAA");
+            return Action.up1;}
         if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='s' || key.getCharacter()=='S')) {return Action.down1;}
         if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='d' || key.getCharacter()=='D')) {return Action.right1;}
         if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='a' || key.getCharacter()=='A')) {return Action.left1;}
@@ -102,6 +105,15 @@ public class LanternaGUI implements GUI {
         if (key.getKeyType() == KeyType.ArrowLeft) return Action.left2;
         if (key.getKeyType() == KeyType.EOF) return Action.exit;
         return Action.none;
+    }
+    @Override
+    public void clear() {
+        screen.clear();
+    }
+
+    @Override
+    public void refresh() throws IOException {
+        screen.refresh();
     }
 
     @Override
