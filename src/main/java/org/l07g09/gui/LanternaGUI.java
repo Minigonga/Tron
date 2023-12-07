@@ -1,5 +1,6 @@
 package org.l07g09.gui;
 
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -61,20 +62,19 @@ public class LanternaGUI implements GUI {
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
-
-        Font loadedFont = font.deriveFont(Font.PLAIN, 7);
+        Font loadedFont = font.deriveFont(Font.PLAIN, 6);
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
         return fontConfig;
     }
 
     @Override
     public void drawPlayer(Player player) {
-        drawCharacter(player.getPos(),player.getNumber(), player.getColor());
+        drawCharacter(player.getPos(), player.getNumber(), player.getColor());
     }
 
     @Override
     public void drawBlock(Block block) {
-        drawCharacter(block.getPos(), ' ', block.getColor());
+        drawCharacter(block.getPos(),' ', block.getColor());
     }
 
     @Override
@@ -86,16 +86,14 @@ public class LanternaGUI implements GUI {
 
     private void drawCharacter(Position p, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
-        tg.setForegroundColor(TextColor.Factory.fromString(color));
-        tg.putString(p.getX(), p.getY() + 1, "" + c);
+        tg.setBackgroundColor(TextColor.Factory.fromString(color));
+        tg.putString(p.getX(), p.getY(), "" +c);
     }
 
     public Action getNextAction() throws IOException {
         KeyStroke key = screen.pollInput();
         if (key == null) return Action.none;
-        if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='w' || key.getCharacter()=='W')) {
-            System.out.println("AAA");
-            return Action.up1;}
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='w' || key.getCharacter()=='W')) {return Action.up1;}
         if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='s' || key.getCharacter()=='S')) {return Action.down1;}
         if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='d' || key.getCharacter()=='D')) {return Action.right1;}
         if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='a' || key.getCharacter()=='A')) {return Action.left1;}
@@ -104,6 +102,7 @@ public class LanternaGUI implements GUI {
         if (key.getKeyType() == KeyType.ArrowRight) return Action.right2;
         if (key.getKeyType() == KeyType.ArrowLeft) return Action.left2;
         if (key.getKeyType() == KeyType.EOF) return Action.exit;
+        if (key.getKeyType() == KeyType.Escape) return Action.exit;
         return Action.none;
     }
     @Override
