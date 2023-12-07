@@ -2,6 +2,7 @@ package org.l07g09.model.game;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.l07g09.model.game.arena.Arena;
 
 import java.awt.*;
 import java.io.IOException;
@@ -11,7 +12,7 @@ public class ArenaTest {
     Arena arena;
     @BeforeEach
     public void setUp() throws IOException, URISyntaxException, FontFormatException {
-        arena = new Arena();
+        arena = new Arena(0,0);
     }
     @Test
     public void collision() {
