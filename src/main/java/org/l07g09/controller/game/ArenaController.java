@@ -19,5 +19,18 @@ public class ArenaController extends GameController {
         } else {
             playersController.step(game, action, time);
         }
+        getModel().collision();
+        if (getModel().getPlayer1().getCollide()){
+            game.setState(null);
+            if (getModel().getPlayer2().getCollide()){
+                System.out.println("DRAW");
+            }
+            else{
+                System.out.println("P2 WIN");            }
+        }
+        else if (getModel().getPlayer2().getCollide()) {
+            game.setState(null);
+            System.out.println("P1 WIN");
+        }
     }
 }
