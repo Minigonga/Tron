@@ -11,8 +11,8 @@ import java.util.List;
 
 public class ArenaBuilder {
     private int width, height;
-    public Arena createArena() throws IOException, URISyntaxException, FontFormatException {
-        width = 190;
+    public Arena createArena()  {
+        width = 240;
         height = 190;
         Arena arena = new Arena(width, height);
         arena.setPlayer1(createPlayer1());
