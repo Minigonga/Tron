@@ -4,7 +4,9 @@ import org.l07g09.gui.LanternaGUI;
 import org.l07g09.model.game.arena.Arena;
 import org.l07g09.model.game.arena.ArenaBuilder;
 import org.l07g09.states.GameState;
+import org.l07g09.states.MenuState;
 import org.l07g09.states.State;
+import org.l07g09.model.menu.Menu;
 
 import java.awt.*;
 import java.io.IOException;
@@ -16,7 +18,7 @@ public class Game {
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(280, 190);
-        this.state = new GameState(new ArenaBuilder().createArena());
+        this.state = new MenuState(new Menu());
     }
 
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException, InterruptedException {
@@ -28,7 +30,7 @@ public class Game {
         int i = 0;
         while (this.state != null) {
             i++;
-            if(i%35000000==0) {
+            if(i%20000000==0) {
                 long startTime = System.currentTimeMillis();
                 state.step(this, gui, startTime);
                 long sleepTime = frameTime - System.currentTimeMillis() - startTime;
