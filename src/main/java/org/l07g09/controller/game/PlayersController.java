@@ -12,13 +12,15 @@ import java.util.ArrayList;
 public class PlayersController extends GameController {
 
     public PlayersController(Arena arena) {super(arena);}
-    void movePlayers(Position pos1, int dir1, Position pos2, int dir2) {
-        Player player1 = getModel().getPlayer1();
-        player1.setPos(pos1.getNextPos(dir1));
-        player1.addTrail(pos1, player1.getColor());
-        Player player2 = getModel().getPlayer2();
-        player2.setPos(pos2.getNextPos(dir2));
-        player2.addTrail(pos2,player2.getColor());
+
+    void jumpPlayer(Player player, int dir1) {
+        Position pos = player.getPos();
+        player.setPos(pos.getNextJumpPos(dir1));
+    }
+    void movePlayer(Player player, int dir1) {
+        Position pos = player.getPos();
+        player.setPos(pos.getNextPos(dir1));
+        player.addTrail(pos, player.getColor());
     }
     void setPlayer1Direction(int direction) {
         getModel().getPlayer1().setDirection(direction);
@@ -30,15 +32,22 @@ public class PlayersController extends GameController {
     public void step(Game game, GUI.Action action, long time) {
         Player p1 = getModel().getPlayer1();
         Player p2 = getModel().getPlayer2();
+        int mov1=0;
+        int mov2=0;
         int dir1 = p1.getDirection(), dir2 = p2.getDirection();
         if (action == GUI.Action.up1 && dir1 != 2) setPlayer1Direction(0);
         if (action == GUI.Action.right1 && dir1 != 3) setPlayer1Direction(1);
         if (action == GUI.Action.down1 && dir1 != 0) setPlayer1Direction(2);
         if (action == GUI.Action.left1 && dir1 != 1) setPlayer1Direction(3);
+        if (action == GUI.Action.jump1){mov1=1;}
         if (action == GUI.Action.up2 && dir2 != 2) setPlayer2Direction(0);
         if (action == GUI.Action.right2 && dir2 != 3) setPlayer2Direction(1);
         if (action == GUI.Action.down2 && dir2 != 0) setPlayer2Direction(2);
         if (action == GUI.Action.left2 && dir2 != 1) setPlayer2Direction(3);
-        movePlayers(p1.getPos(), dir1, p2.getPos(), dir2);
+        if (action == GUI.Action.jump2){mov2=1;}
+        if (mov1==0) {movePlayer(p1,dir1);}
+        else {jumpPlayer(p1, dir1);}
+        if(mov2==0) {movePlayer(p2,dir2);}
+        else{jumpPlayer(p2, dir2);}
     }
 }
