@@ -1,7 +1,7 @@
 package org.l07g09.viewer.game;
 
 import org.l07g09.gui.GUI;
-import org.l07g09.model.game.Arena;
+import org.l07g09.model.game.arena.Arena;
 import org.l07g09.model.game.element.Element;
 import org.l07g09.model.game.element.Player;
 import org.l07g09.viewer.Viewer;
