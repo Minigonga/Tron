@@ -2,6 +2,8 @@ package org.l07g09.model.game.element;
 
 
 import java.util.ArrayList;
+import java.util.List;
+
 import org.l07g09.model.Position;
 
 
@@ -15,15 +17,16 @@ public class Player extends Element {
 
     private char number;
 
-    public Player(int x,int y, String color, char number){
+    public Player(int x,int y, String color, char number, int dir){
         super(x,y, color);
         this.trails = new ArrayList<>();
         this.collide=false;
         this.number = number;
         this.boostCount = 0;
+        this.direction = dir;
     }
 
-    public ArrayList<Block> getTrails() {
+    public List<Block> getTrails() {
         return trails;
     }
 
@@ -36,6 +39,9 @@ public class Player extends Element {
         }
     }
 
+    public void addTrail(Position p, String c){
+        trails.add(new Block(p.getX(),p.getY(),c));
+    }
     public int getDirection() {return direction;}
 
     public void setDirection(int direction) {this.direction = direction;}
@@ -50,8 +56,4 @@ public class Player extends Element {
 
     public int getBoostCount() {return boostCount;}
     public char getNumber() {return number;}
-    public void moveRight() {pos = new Position(pos.getX()+1, pos.getY());}
-    public void moveLeft() {pos = new Position(pos.getX()-1, pos.getY());}
-    public void moveUp() {pos = new Position(pos.getX(), pos.getY()-1);}
-    public void moveDown() {pos = new Position(pos.getX(), pos.getY()+1);}
 }

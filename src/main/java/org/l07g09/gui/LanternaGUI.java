@@ -1,5 +1,6 @@
 package org.l07g09.gui;
 
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -20,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+
 
 public class LanternaGUI implements GUI {
     private final Screen screen;
@@ -44,7 +46,7 @@ public class LanternaGUI implements GUI {
     }
 
     private Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfig) throws IOException {
-        TerminalSize terminalSize = new TerminalSize(width, height + 1);
+        TerminalSize terminalSize = new TerminalSize(width, height);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
                 .setInitialTerminalSize(terminalSize);
         terminalFactory.setForceAWTOverSwing(true);
@@ -60,20 +62,19 @@ public class LanternaGUI implements GUI {
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
-
-        Font loadedFont = font.deriveFont(Font.PLAIN, 25);
+        Font loadedFont = font.deriveFont(Font.PLAIN, 4);
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
         return fontConfig;
     }
 
     @Override
     public void drawPlayer(Player player) {
-        drawCharacter(player.getPos(),player.getNumber(), player.getColor());
+        drawCharacter(player.getPos(), player.getNumber(), player.getColor());
     }
 
     @Override
     public void drawBlock(Block block) {
-        drawCharacter(block.getPos(), ' ', block.getColor());
+        drawCharacter(block.getPos(),' ', block.getColor());
     }
 
     @Override
@@ -85,8 +86,8 @@ public class LanternaGUI implements GUI {
 
     private void drawCharacter(Position p, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
-        tg.setForegroundColor(TextColor.Factory.fromString(color));
-        tg.putString(p.getX(), p.getY() + 1, "" + c);
+        tg.setBackgroundColor(TextColor.Factory.fromString(color));
+        tg.putString(p.getX(), p.getY(), "" +c);
     }
 
     public Action getNextAction() throws IOException {
@@ -101,7 +102,17 @@ public class LanternaGUI implements GUI {
         if (key.getKeyType() == KeyType.ArrowRight) return Action.right2;
         if (key.getKeyType() == KeyType.ArrowLeft) return Action.left2;
         if (key.getKeyType() == KeyType.EOF) return Action.exit;
+        if (key.getKeyType() == KeyType.Escape) return Action.exit;
         return Action.none;
+    }
+    @Override
+    public void clear() {
+        screen.clear();
+    }
+
+    @Override
+    public void refresh() throws IOException {
+        screen.refresh();
     }
 
     @Override

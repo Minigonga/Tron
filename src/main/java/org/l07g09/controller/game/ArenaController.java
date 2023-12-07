@@ -2,7 +2,7 @@ package org.l07g09.controller.game;
 
 import org.l07g09.Game;
 import org.l07g09.gui.GUI;
-import org.l07g09.model.game.Arena;
+import org.l07g09.model.game.arena.Arena;
 
 
 public class ArenaController extends GameController {

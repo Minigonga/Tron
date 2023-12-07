@@ -2,7 +2,7 @@ package org.l07g09.states;
 
 import org.l07g09.controller.Controller;
 import org.l07g09.controller.game.ArenaController;
-import org.l07g09.model.game.Arena;
+import org.l07g09.model.game.arena.Arena;
 import org.l07g09.viewer.Viewer;
 import org.l07g09.viewer.game.GameViewer;
 
