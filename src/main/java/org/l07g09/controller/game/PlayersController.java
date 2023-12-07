@@ -3,17 +3,22 @@ package org.l07g09.controller.game;
 import org.l07g09.Game;
 import org.l07g09.gui.GUI;
 import org.l07g09.model.Position;
-import org.l07g09.model.game.Arena;
+import org.l07g09.model.game.arena.Arena;
+import org.l07g09.model.game.element.Block;
 import org.l07g09.model.game.element.Player;
 
-import java.io.IOException;
+import java.util.ArrayList;
 
 public class PlayersController extends GameController {
 
     public PlayersController(Arena arena) {super(arena);}
     void movePlayers(Position pos1, int dir1, Position pos2, int dir2) {
-        getModel().getPlayer1().setPos(pos1.getNextPos(dir1));
-        getModel().getPlayer2().setPos(pos2.getNextPos(dir2));
+        Player player1 = getModel().getPlayer1();
+        player1.setPos(pos1.getNextPos(dir1));
+        player1.addTrail(pos1, player1.getColor());
+        Player player2 = getModel().getPlayer2();
+        player2.setPos(pos2.getNextPos(dir2));
+        player2.addTrail(pos2,player2.getColor());
     }
     void setPlayer1Direction(int direction) {
         getModel().getPlayer1().setDirection(direction);
