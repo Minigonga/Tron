@@ -98,13 +98,18 @@ public class LanternaGUI implements GUI {
         if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='d' || key.getCharacter()=='D')) {return Action.right1;}
         if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='a' || key.getCharacter()=='A')) {return Action.left1;}
         if (key.getKeyType() == KeyType.Character && key.getCharacter()==' ') {return Action.jump1;}
+
         if (key.getKeyType() == KeyType.ArrowUp) return Action.up2;
         if (key.getKeyType() == KeyType.ArrowDown) return Action.down2;
         if (key.getKeyType() == KeyType.ArrowRight) return Action.right2;
         if (key.getKeyType() == KeyType.ArrowLeft) return Action.left2;
         if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='L' || key.getCharacter()=='l')) {return Action.jump2;}
+
         if (key.getKeyType() == KeyType.EOF) return Action.exit;
         if (key.getKeyType() == KeyType.Escape) return Action.exit;
+
+        if (key.getKeyType() == KeyType.Enter) return Action.select;
+
         return Action.none;
     }
     @Override
