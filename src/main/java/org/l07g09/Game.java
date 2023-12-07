@@ -24,12 +24,16 @@ public class Game {
     }
     private void start() throws InterruptedException, IOException {
         int FPS = 20;
-        int frameTime = 1000 / FPS;
+        long frameTime = 1000 / FPS;
+        int i = 0;
         while (this.state != null) {
-            long startTime = System.currentTimeMillis();
-            state.step(this, gui, startTime);
-            long sleepTime = frameTime - System.currentTimeMillis() - startTime;
-            if (sleepTime > 0) Thread.sleep(sleepTime);
+            i++;
+            if(i%90000000==0) {
+                long startTime = System.currentTimeMillis();
+                state.step(this, gui, startTime);
+                long sleepTime = frameTime - System.currentTimeMillis() - startTime;
+                if (sleepTime > 0) Thread.sleep(sleepTime);
+            }
         }
         gui.close();
     }
