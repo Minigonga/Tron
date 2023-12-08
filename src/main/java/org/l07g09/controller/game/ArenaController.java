@@ -3,7 +3,9 @@ package org.l07g09.controller.game;
 import org.l07g09.Game;
 import org.l07g09.gui.GUI;
 import org.l07g09.model.game.arena.Arena;
+import org.l07g09.model.game.arena.ArenaBuilder;
 import org.l07g09.model.menu.Menu;
+import org.l07g09.states.GameState;
 import org.l07g09.states.MenuState;
 
 
@@ -16,24 +18,22 @@ public class ArenaController extends GameController {
     }
     @Override
     public void step(Game game, GUI.Action action) {
+        Arena arena = getModel();
+        int score1 = arena.getScore1(), score2 = arena.getScore2();
         if (action == GUI.Action.exit) {
             game.setState(null);
         } else {
             playersController.step(game, action);
         }
-        getModel().collision();
-        if (getModel().getPlayer1().getCollide()){
-            game.setState(null);
-            if (getModel().getPlayer2().getCollide()){
-                System.out.println("DRAW");
-            }
-            else{
-                System.out.println("P2 WIN");
+        if(score1==4 || score2==4) game.setState(null);
+        arena.collision();
+        if (arena.getPlayer1().getCollide()){
+            if (!arena.getPlayer2().getCollide()){
+                game.setState(new GameState(new ArenaBuilder().createArena(score1+1, score2)));
             }
         }
-        else if (getModel().getPlayer2().getCollide()) {
-            game.setState(null);
-            System.out.println("P1 WIN");
+        else if (arena.getPlayer2().getCollide()) {
+            game.setState(new GameState(new ArenaBuilder().createArena(score1, score2+1)));
         }
     }
 }
