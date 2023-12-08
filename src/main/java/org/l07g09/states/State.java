@@ -6,7 +6,9 @@ import org.l07g09.gui.GUI;
 import org.l07g09.gui.LanternaGUI;
 import org.l07g09.viewer.Viewer;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public abstract class State<T> {
     private final T model;
@@ -27,9 +29,9 @@ public abstract class State<T> {
         return model;
     }
 
-    public void step(Game game, GUI gui, long time) throws IOException {
+    public void step(Game game, GUI gui) throws IOException, URISyntaxException, FontFormatException {
         GUI.Action action = gui.getNextAction();
-        controller.step(game, action, time);
+        controller.step(game, action);
         viewer.draw(gui);
     }
 }

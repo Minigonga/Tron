@@ -3,7 +3,9 @@ package org.l07g09.controller;
 import org.l07g09.Game;
 import org.l07g09.gui.GUI;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public abstract class Controller<T> {
     private final T model;
@@ -16,5 +18,5 @@ public abstract class Controller<T> {
         return model;
     }
 
-    public abstract void step(Game game, GUI.Action action, long time) throws IOException;
+    public abstract void step(Game game, GUI.Action action) throws IOException, URISyntaxException, FontFormatException;
 }

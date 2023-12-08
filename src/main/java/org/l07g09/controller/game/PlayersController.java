@@ -29,7 +29,7 @@ public class PlayersController extends GameController {
         getModel().getPlayer2().setDirection(direction);
     }
     @Override
-    public void step(Game game, GUI.Action action, long time) {
+    public void step(Game game, GUI.Action action) {
         Player p1 = getModel().getPlayer1();
         Player p2 = getModel().getPlayer2();
         int mov1=0;
