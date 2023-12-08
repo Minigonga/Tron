@@ -14,10 +14,10 @@ Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo P
 - **Boost** - Um jogador pode andar numa velocidade mais rápida durante um curto período de tempo.
 - **Salto** - Um jogador pode saltar evitando assim um rastro à sua frente.
 - **Menu** - Quando inciar o programa aparece o menu que vai ter como opções (Start, instructions e Exit).
+- **Score** - Mostra as partidas ganhas por cada jogador por exemplo (P1 2-3 P2).
 
 ### PLANNED FEATURES
-
-- **Score** - Mostra as partidas ganhas por cada jogador por exemplo (P1 2-3 P2).
+- **ScoreBoard** - Retângulo ao lado da arena para pode ver os jogos ganhos e os boosts restantes dos jogadores.
 - **Instructions** - Menu que explica como se joga o jogo e diz quais são os controlos para o conseguir jogar.
 
 ### UML CLASS DIAGRAM
