@@ -15,23 +15,24 @@ public class ArenaController extends GameController {
         this.playersController = new PlayersController(arena);
     }
     @Override
-    public void step(Game game, GUI.Action action, long time) {
+    public void step(Game game, GUI.Action action) {
         if (action == GUI.Action.exit) {
             game.setState(null);
         } else {
-            playersController.step(game, action, time);
+            playersController.step(game, action);
         }
         getModel().collision();
         if (getModel().getPlayer1().getCollide()){
-            game.setState(new MenuState(new Menu()));
+            game.setState(null);
             if (getModel().getPlayer2().getCollide()){
                 System.out.println("DRAW");
             }
             else{
-                System.out.println("P2 WIN");            }
+                System.out.println("P2 WIN");
+            }
         }
         else if (getModel().getPlayer2().getCollide()) {
-            game.setState(new MenuState(new Menu()));
+            game.setState(null);
             System.out.println("P1 WIN");
         }
     }
