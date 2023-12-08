@@ -18,9 +18,7 @@ public class Game {
     private int finish;
     private State state;
 
-    public Game() throws FontFormatException, IOException, URISyntaxException {
-        this.guiMenu = new LanternaGUI(30,25, 30);
-        this.state = new MenuState(new Menu());
+    public Game() {
         this.finish=0;
     }
 
@@ -28,6 +26,8 @@ public class Game {
         new Game().startMenu();
     }
     private void startMenu() throws IOException, URISyntaxException, FontFormatException {
+        guiMenu = new LanternaGUI(30,25,30);
+        this.state = new MenuState(new Menu());
         int i = 0;
         while (this.state != null) {
             i++;
@@ -35,20 +35,17 @@ public class Game {
         }
         guiMenu.close();
         if (finish==1) {
-            this.state = new GameState(new ArenaBuilder().createArena());
-            this.guiArena = new LanternaGUI(280, 190, 4);
             startArena();
         }
     }
     public void startArena() throws IOException, URISyntaxException, FontFormatException {
         finish=0;
-        setState(new GameState(new ArenaBuilder().createArena()));
+        this.guiArena = new LanternaGUI(280, 190, 4);
+        setState(new GameState(new ArenaBuilder().createArena(0, 0)));
         while (this.state != null) {
             state.step(this, guiArena);
         }
         guiArena.close();
-        guiMenu = new LanternaGUI(30,25,30);
-        this.state = new MenuState(new Menu());
         startMenu();
     }
 

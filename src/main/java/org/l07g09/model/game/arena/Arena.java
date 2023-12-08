@@ -15,11 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Arena {
-    Player p1;
-    Player p2;
-    int height;
-    int width;
+    Player p1, p2;
+    int height, width;
     List<Block> walls;
+
+
+    int score1, score2;
     public Arena(int w,int h) {
         width = w;
         height = h;
@@ -32,6 +33,22 @@ public class Arena {
     public Player getPlayer2(){return this.p2;}
     public void setPlayer1(Player p1) {this.p1 = p1;}
     public void setPlayer2 (Player p2) {this.p2 = p2;}
+
+    public int getScore1() {
+        return score1;
+    }
+
+    public void setScore1(int score1) {
+        this.score1 = score1;
+    }
+
+    public int getScore2() {
+        return score2;
+    }
+
+    public void setScore2(int score2) {
+        this.score2 = score2;
+    }
 
     public void collision(){
         if (p1.getPos().getX()<1 || p1.getPos().getX()>width-51 || p1.getPos().getY()<1 || p1.getPos().getY()>height-1) p1.setCollide(true);

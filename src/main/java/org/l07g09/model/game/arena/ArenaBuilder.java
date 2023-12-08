@@ -11,13 +11,15 @@ import java.util.List;
 
 public class ArenaBuilder {
     private int width, height;
-    public Arena createArena()  {
+    public Arena createArena(int score1, int score2)  {
         width = 240;
         height = 190;
         Arena arena = new Arena(width, height);
         arena.setPlayer1(createPlayer1());
         arena.setPlayer2(createPlayer2());
         arena.setWalls(createWalls());
+        arena.setScore1(score1);
+        arena.setScore2(score2);
         return arena;
     }
 
