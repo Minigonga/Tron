@@ -30,8 +30,8 @@ public class LanternaGUI implements GUI {
         this.screen = screen;
     }
 
-    public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
-        AWTTerminalFontConfiguration fontConfig = loadSquareFont();
+    public LanternaGUI(int width, int height, int size) throws IOException, FontFormatException, URISyntaxException {
+        AWTTerminalFontConfiguration fontConfig = loadSquareFont(size);
         Terminal terminal = createTerminal(width, height, fontConfig);
         this.screen = createScreen(terminal);
     }
@@ -55,14 +55,14 @@ public class LanternaGUI implements GUI {
         return terminal;
     }
 
-    private AWTTerminalFontConfiguration loadSquareFont() throws URISyntaxException, FontFormatException, IOException {
+    private AWTTerminalFontConfiguration loadSquareFont(int size) throws URISyntaxException, FontFormatException, IOException {
         URL resource = getClass().getClassLoader().getResource("square.ttf");
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
-        Font loadedFont = font.deriveFont(Font.PLAIN, 4);
+        Font loadedFont = font.deriveFont(Font.PLAIN, size);
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
         return fontConfig;
     }
