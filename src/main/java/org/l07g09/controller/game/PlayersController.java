@@ -13,9 +13,15 @@ public class PlayersController extends GameController {
 
     public PlayersController(Arena arena) {super(arena);}
 
-    void jumpPlayer(Player player, int dir1) {
+    void jumpPlayer(Player player, int dir) {
         Position pos = player.getPos();
-        player.setPos(pos.getNextJumpPos(dir1));
+        player.setPos(pos.getNextJumpPos(dir));
+    }
+    void boostPlayer(Player player, int dir) {
+        for (int i = 0; i < 7; i++) {
+            movePlayer(player, dir);
+            getModel().collision();
+        }
     }
     void movePlayer(Player player, int dir1) {
         Position pos = player.getPos();
