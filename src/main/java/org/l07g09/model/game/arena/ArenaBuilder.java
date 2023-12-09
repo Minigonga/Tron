@@ -46,14 +46,17 @@ public class ArenaBuilder {
         Random rand = new Random();
         int x = rand.nextInt(40);
         int y = rand.nextInt(150);
-        return new Position(x+45,y+20);
+        int l = rand.nextInt(2);
+        if (l==0) return new Position(x+45,y+20);
+        else return new Position(x+135,y+20);
     }
     private int randomDirLoader(Position pos){
         int y = pos.getY();
         List <Integer> directions = new ArrayList<>();
         if (y<=150) directions.add(2);
         if (y>=40) directions.add(0);
-        directions.add(3);
+        if (pos.getX()>=95) directions.add(3);
+        else directions.add(1);
         Random rand = new Random();
         return directions.get(rand.nextInt(directions.size()));
     }
