@@ -53,6 +53,9 @@ public class Arena {
     public ScoreBoard getSb() {
         return sb;
     }
+    public void changeBoostsSb() {
+        sb.makeBoost(boost1, boost2);
+    }
 
     public void setBoost1(int boost1) {
         this.boost1 = boost1;
@@ -87,5 +90,4 @@ public class Arena {
             p2.setCollide(true);
         }
     }
-
 }
