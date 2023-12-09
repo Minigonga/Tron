@@ -93,21 +93,23 @@ public class LanternaGUI implements GUI {
     public Action getNextAction() throws IOException {
         KeyStroke key = screen.pollInput();
         if (key == null) return Action.none;
+
         if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='w' || key.getCharacter()=='W')) {return Action.up1;}
         if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='s' || key.getCharacter()=='S')) {return Action.down1;}
         if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='d' || key.getCharacter()=='D')) {return Action.right1;}
         if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='a' || key.getCharacter()=='A')) {return Action.left1;}
         if (key.getKeyType() == KeyType.Character && key.getCharacter()==' ') {return Action.jump1;}
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='x' || key.getCharacter()=='X')) {return Action.boost1;}
 
         if (key.getKeyType() == KeyType.ArrowUp) return Action.up2;
         if (key.getKeyType() == KeyType.ArrowDown) return Action.down2;
         if (key.getKeyType() == KeyType.ArrowRight) return Action.right2;
         if (key.getKeyType() == KeyType.ArrowLeft) return Action.left2;
-        if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='L' || key.getCharacter()=='l')) {return Action.jump2;}
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='l' || key.getCharacter()=='L')) {return Action.jump2;}
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter()=='p' || key.getCharacter()=='P')) {return Action.boost2;}
 
         if (key.getKeyType() == KeyType.EOF) return Action.exit;
         if (key.getKeyType() == KeyType.Escape) return Action.exit;
-
         if (key.getKeyType() == KeyType.Enter) return Action.select;
 
         return Action.none;

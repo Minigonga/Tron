@@ -20,6 +20,7 @@ public class Arena {
     int height, width;
     List<Block> walls;
     int score1, score2;
+    int boost1, boost2;
     ScoreBoard sb;
     public Arena(int w,int h) {
         width = w;
@@ -36,24 +37,41 @@ public class Arena {
     public int getScore1() {
         return score1;
     }
-
     public void setScore1(int score1) {
         this.score1 = score1;
     }
-
     public int getScore2() {
         return score2;
     }
-
     public void setScore2(int score2) {
         this.score2 = score2;
     }
+
     public void setSb(ScoreBoard sb) {
         this.sb = sb;
     }
     public ScoreBoard getSb() {
         return sb;
     }
+    public void changeBoostsSb() {
+        sb.makeBoost(boost1, boost2);
+    }
+
+    public void setBoost1(int boost1) {
+        this.boost1 = boost1;
+    }
+    public void setBoost2(int boost2) {
+        this.boost2 = boost2;
+    }
+    public int getBoost(char who) {
+        if (who == '1') return boost1;
+        else return boost2;
+    }
+    public void boostUsed(char who) {
+        if (who == '1') boost1--;
+        else boost2--;
+    }
+
     public void collision(){
         if (p1.getPos().getX()<1 || p1.getPos().getX()>width-51 || p1.getPos().getY()<1 || p1.getPos().getY()>height-1) p1.setCollide(true);
         if (p2.getPos().getX()<1 || p2.getPos().getX()>width-51 || p2.getPos().getY()<1 || p2.getPos().getY()>height-1) p2.setCollide(true);
@@ -72,5 +90,4 @@ public class Arena {
             p2.setCollide(true);
         }
     }
-
 }

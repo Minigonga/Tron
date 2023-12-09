@@ -24,7 +24,7 @@ public class ScoreBoard {
         else if (score2 == 2) makeTwoScore(2);
         else if (score2 == 3) makeThreeScore(2);
     }
-    private void makeBoost(int boost1, int boost2) {
+    public void makeBoost(int boost1, int boost2) {
         if (boost1 == 0) makeZeroBoost(1);
         else if (boost1 == 1) makeOneBoost(1);
         else if (boost1 == 2) makeTwoBoost(1);
@@ -153,7 +153,6 @@ public class ScoreBoard {
         }
         if (who == 1) score1View = local; else score2View = local;
     }
-
     public void makeZeroBoost(int who) {
         String color = "#FFFFFF";
         List<Block> local = new ArrayList<>();
