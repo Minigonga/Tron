@@ -21,7 +21,7 @@ public class ArenaBuilder {
         arena.setWalls(createWalls());
         arena.setScore1(score1);
         arena.setScore2(score2);
-        arena.setSb(new ScoreBoard(score1,score2,0,0));
+        arena.setSb(new ScoreBoard(score1, score2,3,3));
         return arena;
     }
 
