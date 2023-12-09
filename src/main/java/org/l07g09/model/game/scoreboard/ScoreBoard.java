@@ -175,10 +175,32 @@ public class ScoreBoard {
         String color = "#FFFFFF";
         List<Block> local = new ArrayList<>();
         int y;
-        if (who == 1) y = 53; else y=119;
-
-        if (who == 1) boost1View = local;
-        else boost2View = local;
+        if (who == 1) y = 53;
+        else y = 119;
+        for (int c = 0; c < 5; c++) {
+            local.add(new Block(c + 231, y + 7, color));
+            if (c == 0){
+                for (int r = 0; r < 2; r++) local.add(new Block(c + 231, r + y + 1, color));
+                local.add(new Block(c + 231, y + 6, color));
+            }
+            if (c == 1) {
+                for (int r = 0; r < 2; r++) local.add(new Block(c + 231, r + y, color));
+                for (int r = 0; r < 2; r++) local.add(new Block(c + 231, r + y + 5, color));
+            }
+            if (c == 2) {
+                local.add(new Block(c + 231, y, color));
+                for (int r = 0; r < 2; r++) local.add(new Block(c + 231, r + y + 4, color));
+            }
+            if (c == 3) {
+                for (int r = 0; r < 2; r++) local.add(new Block(c + 231, r + y, color));
+                for (int r = 0; r < 2; r++) local.add(new Block(c + 231, r + y + 3, color));
+            }
+            if (c == 4) {
+                for (int r = 0; r < 3; r++) local.add(new Block(c + 231, r + y + 1, color));
+            }
+            if (who == 1) boost1View = local;
+            else boost2View = local;
+        }
     }
     public void makeThreeBoost(int who) {
         String color = "#FFFFFF";
