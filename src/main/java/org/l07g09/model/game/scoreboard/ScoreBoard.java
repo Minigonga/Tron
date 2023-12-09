@@ -207,7 +207,34 @@ public class ScoreBoard {
         List<Block> local = new ArrayList<>();
         int y;
         if (who == 1) y = 53; else y=119;
-
+        for (int c = 0; c < 5; c++) {
+            if (c == 0) {
+                for (int r = 0; r < 2; r++) {
+                    local.add(new Block(c + 231, r + y + 1, color));
+                    local.add(new Block(c + 231, r + y + 5, color));
+                }
+            }
+            if (c == 1) {
+                for (int r = 0; r < 2; r++) {
+                    local.add(new Block(c + 231, r + y, color));
+                    local.add(new Block(c + 231, r + y + 6, color));
+                }
+            }
+            if (c == 2) {
+                local.add(new Block(c + 231,  y, color));
+                for (int r = 0; r < 2; r++) local.add(new Block(c + 231,  r + y + 3, color));
+                local.add(new Block(c + 231,  y + 7, color));
+            }
+            if (c == 3) {
+                for (int r = 0; r < 8; r++) local.add(new Block(c + 231, r + y, color));
+            }
+            if (c == 4) {
+                for (int r = 0; r < 2; r++) {
+                    local.add(new Block(c + 231, r + y + 1, color));
+                    local.add(new Block(c + 231, r + y + 5, color));
+                }
+            }
+        }
         if (who == 1) boost1View = local;
         else boost2View = local;
     }
