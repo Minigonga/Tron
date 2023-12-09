@@ -26,7 +26,7 @@ public class Game {
         new Game().startMenu();
     }
     private void startMenu() throws IOException, URISyntaxException, FontFormatException {
-        guiMenu = new LanternaGUI(30,25,30);
+        guiMenu = new LanternaGUI(40,30,25);
         this.state = new MenuState(new Menu());
         int i = 0;
         while (this.state != null) {

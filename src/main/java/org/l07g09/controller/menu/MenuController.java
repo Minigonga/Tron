@@ -5,8 +5,11 @@ import org.l07g09.controller.Controller;
 import org.l07g09.gui.GUI;
 import org.l07g09.gui.LanternaGUI;
 import org.l07g09.model.game.arena.ArenaBuilder;
+import org.l07g09.model.menu.Instructions;
 import org.l07g09.model.menu.Menu;
 import org.l07g09.states.GameState;
+import org.l07g09.states.InstructionsState;
+import org.l07g09.states.MenuState;
 
 import java.awt.*;
 import java.io.IOException;
@@ -30,9 +33,12 @@ public class MenuController extends Controller<Menu> {
                 if (getModel().isExit()) {
                     game.setState(null);
                 }
-                if (getModel().isStart()) {
+                else if (getModel().isStart()) {
                     game.setState(null);
                     game.setFinish(1);
+                }
+                else {
+                    game.setState(new InstructionsState(new Instructions()));
                 }
         }
     }
