@@ -1,4 +1,4 @@
-package org.l07g09.viewer.game;
+package org.l07g09.viewer;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,6 +7,7 @@ import org.l07g09.model.Position;
 import org.l07g09.model.game.arena.Arena;
 import org.l07g09.model.game.element.Block;
 import org.l07g09.model.game.element.Player;
+import org.l07g09.viewer.game.GameViewer;
 import org.mockito.Mockito;
 
 import java.io.IOException;
