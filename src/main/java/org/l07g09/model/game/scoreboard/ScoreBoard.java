@@ -9,7 +9,10 @@ import java.util.List;
 
 public class ScoreBoard {
 
-    List<Block> score1View, score2View;
+    List<Block> score1View;
+
+
+    List<Block> score2View;
     List<Block> player1View, player2View;
     List<Block> boost1View, boost2View;
     List<Block> boostLeftView;
@@ -19,7 +22,8 @@ public class ScoreBoard {
         makeBoost(boost1, boost2);
     }
     public void makeScore(int score1, int score2) {
-        makeZeroScore(1);
+        makeZeroScore(2);
+        makeOneScore(1);
         /*if (score1 == 0) makeZeroScore(1);
         else if (score1 == 1) makeOneScore(1);
         else if (score1 == 2) makeTwoScore(1);
@@ -36,19 +40,19 @@ public class ScoreBoard {
     public void makeZeroScore(int who) {
         String color = "#FFFFFF";
         List<Block> local = new ArrayList<>();
+        int y;
+        if (who == 1) y = 70; else y=95;
         for (int c = 0; c < 12; c++) {
-            local.add(new Block(c+245, 10, color));
-            local.add(new Block(c+245, 23, color));
+            local.add(new Block(c+228, y, color));
+            local.add(new Block(c+228, y+13, color));
         }
-        for (int r = 1; r < 14; r++) {
-            local.add(new Block(245, r+10, color));
-            local.add(new Block(256, r+10, color));
+        for (int r = 0; r < 14; r++) {
+            local.add(new Block(228, r+y, color));
+            local.add(new Block(239, r+y, color));
         }
-        score1View = local;
+        if (who == 1) score1View = local; else score2View = local;
     }
-    public void makeOneScore(int who) {
 
-    }
     public void makeTwoScore(int who) {
 
     }
@@ -57,5 +61,8 @@ public class ScoreBoard {
     }
     public List<Block> getScore1View() {
         return score1View;
+    }
+    public List<Block> getScore2View() {
+        return score2View;
     }
 }
