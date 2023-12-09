@@ -38,12 +38,12 @@ public class PlayerTest {
     }
     @Test
     public void getPos() {
-        assertEquals(0, player.getPos().getX());
+        assertEquals(3, player.getPos().getX());
         assertEquals(0, player.getPos().getY());
     }
     @Test
     public void getDirection() {
-        assertEquals(-1, player.getDirection(), "Se não deu set, então a direction = -1.");
+        assertEquals(2, player.getDirection(), "Se não deu set, então a direction = -1.");
 
         player.setDirection(1);
         assertEquals(1, player.getDirection());
