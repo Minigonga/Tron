@@ -9,7 +9,7 @@ import org.l07g09.model.Position;
 
 public class Player extends Element {
     private int boostCount;
-    protected ArrayList<Block> trails;
+    protected ArrayList<Block> trail;
 
     private int direction = -1;
 
@@ -19,15 +19,15 @@ public class Player extends Element {
 
     public Player(int x,int y, String color, char number, int dir){
         super(x,y, color);
-        this.trails = new ArrayList<>();
+        this.trail = new ArrayList<>();
         this.collide=false;
         this.number = number;
         this.boostCount = 0;
         this.direction = dir;
     }
 
-    public List<Block> getTrails() {
-        return trails;
+    public List<Block> getTrail() {
+        return trail;
     }
 
     public void boost() {
@@ -39,8 +39,8 @@ public class Player extends Element {
         }
     }
 
-    public void addTrail(Position p, String c){
-        trails.add(new Block(p.getX(),p.getY(),c));
+    public void incTrail(Position p, String c){
+        trail.add(new Block(p.getX(),p.getY(),c));
     }
     public int getDirection() {return direction;}
 

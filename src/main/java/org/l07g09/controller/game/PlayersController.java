@@ -28,7 +28,7 @@ public class PlayersController extends GameController {
     void movePlayer(Player player, int dir1) {
         Position pos = player.getPos();
         player.setPos(pos.getNextPos(dir1));
-        player.addTrail(pos, player.getColor());
+        player.incTrail(pos, player.getColor());
     }
     void setPlayer1Direction(int direction) {
         getModel().getPlayer1().setDirection(direction);

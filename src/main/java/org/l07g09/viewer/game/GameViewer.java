@@ -20,8 +20,8 @@ public class GameViewer extends Viewer<Arena> {
         Player player1 = getModel().getPlayer1();
         Player player2 = getModel().getPlayer2();
         ScoreBoard sb = getModel().getSb();
-        drawElements(gui, player1.getTrails(), new BlockViewer());
-        drawElements(gui, player2.getTrails(), new BlockViewer());
+        drawElements(gui, player1.getTrail(), new BlockViewer());
+        drawElements(gui, player2.getTrail(), new BlockViewer());
         drawElement(gui, player1, new PlayerViewer());
         drawElement(gui, player2, new PlayerViewer());
         drawElements(gui, sb.getScore1View(), new BlockViewer());
