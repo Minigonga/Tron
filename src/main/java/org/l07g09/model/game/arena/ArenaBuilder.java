@@ -2,6 +2,7 @@ package org.l07g09.model.game.arena;
 
 import org.l07g09.model.game.element.Block;
 import org.l07g09.model.game.element.Player;
+import org.l07g09.model.game.scoreboard.ScoreBoard;
 
 import java.awt.*;
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class ArenaBuilder {
         arena.setWalls(createWalls());
         arena.setScore1(score1);
         arena.setScore2(score2);
+        arena.setSb(new ScoreBoard(score1, score2,3,3));
         return arena;
     }
 

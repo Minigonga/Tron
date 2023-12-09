@@ -25,15 +25,18 @@ public class ArenaController extends GameController {
         } else {
             playersController.step(game, action);
         }
-        if(score1==4 || score2==4) game.setState(null);
         arena.collision();
         if (arena.getPlayer1().getCollide()){
             if (!arena.getPlayer2().getCollide()){
-                game.setState(new GameState(new ArenaBuilder().createArena(score1+1, score2)));
+                if(score1==4 || score2+1==4) game.setState(null);
+                else game.setState(new GameState(new ArenaBuilder().createArena(score1, score2+1)));
+            } else {
+                game.setState(new GameState(new ArenaBuilder().createArena(score1, score2)));
             }
         }
         else if (arena.getPlayer2().getCollide()) {
-            game.setState(new GameState(new ArenaBuilder().createArena(score1, score2+1)));
+            if(score1+1==4 || score2==4) game.setState(null);
+            else game.setState(new GameState(new ArenaBuilder().createArena(score1+1, score2)));
         }
     }
 }
