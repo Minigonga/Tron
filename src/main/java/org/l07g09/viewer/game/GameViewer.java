@@ -4,6 +4,7 @@ import org.l07g09.gui.GUI;
 import org.l07g09.model.game.arena.Arena;
 import org.l07g09.model.game.element.Element;
 import org.l07g09.model.game.element.Player;
+import org.l07g09.model.game.scoreboard.ScoreBoard;
 import org.l07g09.viewer.Viewer;
 
 import java.util.List;
@@ -18,10 +19,12 @@ public class GameViewer extends Viewer<Arena> {
         drawElements(gui, getModel().getWalls(), new BlockViewer());
         Player player1 = getModel().getPlayer1();
         Player player2 = getModel().getPlayer2();
+        ScoreBoard sb = getModel().getSb();
         drawElements(gui, player1.getTrails(), new BlockViewer());
         drawElements(gui, player2.getTrails(), new BlockViewer());
         drawElement(gui, player1, new PlayerViewer());
         drawElement(gui, player2, new PlayerViewer());
+        drawElements(gui, sb.getScore1View(), new BlockViewer());
     }
 
     private <T extends Element> void drawElements(GUI gui, List<T> elements, ElementViewer<T> viewer) {
