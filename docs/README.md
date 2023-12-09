@@ -17,9 +17,6 @@ Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo P
 - **ScoreBoard** - Retângulo ao lado da arena para pode ver os jogos ganhos e os boosts restantes dos jogadores.
 - **Boost** - Um jogador pode andar numa velocidade mais rápida durante um curto período de tempo.
 - **RandomSpawner** - Os jogadores nascem em posições aleatórias, mas simétricas ao mesmo tempo para ninguém ter vantagem.
-
-### PLANNED FEATURES
-
 - **Instructions** - Menu que explica como se joga o jogo e diz quais são os controlos para o conseguir jogar.
 
 ### UML CLASS DIAGRAM
