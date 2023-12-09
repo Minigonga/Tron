@@ -30,15 +30,6 @@ public class Player extends Element {
         return trail;
     }
 
-    public void boost() {
-        if (boostCount<3) {
-            for (int i = 0; i <7; i++) {
-
-            }
-            boostCount++;
-        }
-    }
-
     public void incTrail(Position p, String c){
         trail.add(new Block(p.getX(),p.getY(),c));
     }
