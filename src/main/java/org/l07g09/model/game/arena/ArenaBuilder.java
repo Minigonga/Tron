@@ -1,14 +1,13 @@
 package org.l07g09.model.game.arena;
 
+import org.l07g09.model.Position;
 import org.l07g09.model.game.element.Block;
 import org.l07g09.model.game.element.Player;
 import org.l07g09.model.game.scoreboard.ScoreBoard;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ArenaBuilder {
     private int width, height;
@@ -16,8 +15,11 @@ public class ArenaBuilder {
         width = 240;
         height = 190;
         Arena arena = new Arena(width, height);
-        arena.setPlayer1(createPlayer1());
-        arena.setPlayer2(createPlayer2());
+        Position pos =randomPosLoader();
+        int dir = randomDirLoader(pos);
+        arena.setPlayer1(createPlayer1(pos,dir));
+        if (dir==1 || dir==3) dir = (dir+2)%4;
+        arena.setPlayer2(createPlayer2(pos,dir));
         arena.setWalls(createWalls());
         arena.setScore1(score1);
         arena.setScore2(score2);
@@ -40,12 +42,31 @@ public class ArenaBuilder {
         }
         return walls;
     }
-    public Player createPlayer1() {
-        return new Player(55,30,"#FFFFFF", '1', 2);
+    private Position randomPosLoader(){
+        Random rand = new Random();
+        int x = rand.nextInt(40);
+        int y = rand.nextInt(150);
+        int l = rand.nextInt(2);
+        if (l==0) return new Position(x+45,y+20);
+        else return new Position(x+135,y+20);
+    }
+    private int randomDirLoader(Position pos){
+        int y = pos.getY();
+        List <Integer> directions = new ArrayList<>();
+        if (y<=150) directions.add(2);
+        if (y>=40) directions.add(0);
+        if (pos.getX()>=95) directions.add(3);
+        else directions.add(1);
+        Random rand = new Random();
+        return directions.get(rand.nextInt(directions.size()));
     }
 
-    public Player createPlayer2() {
-        return new Player(100,40,"#987654", '2', 2);
+    public Player createPlayer1(Position pos, int dir) {
+        return new Player(pos.getX(),pos.getY(),"#FFFFFF", '1', dir);
+    }
+
+    public Player createPlayer2(Position pos, int dir) {
+        return new Player(190-pos.getX(),pos.getY(),"#987654", '2', dir);
     }
 }
 
