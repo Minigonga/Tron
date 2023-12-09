@@ -16,7 +16,10 @@ public class ArenaBuilder {
         height = 190;
         Arena arena = new Arena(width, height);
         Position pos =randomPosLoader();
-        arena.setPlayer2(createPlayer2(pos));
+        int dir = randomDirLoader(pos);
+        arena.setPlayer1(createPlayer1(pos,dir));
+        if (dir==1 || dir==3) dir = (dir+2)%4;
+        arena.setPlayer2(createPlayer2(pos,dir));
         arena.setWalls(createWalls());
         arena.setScore1(score1);
         arena.setScore2(score2);
@@ -45,13 +48,22 @@ public class ArenaBuilder {
         int y = rand.nextInt(150);
         return new Position(x+45,y+20);
     }
-
-    public Player createPlayer1(Position pos) {
-        return new Player(pos.getX(),pos.getY(),"#FFFFFF", '1', 2);
+    private int randomDirLoader(Position pos){
+        int y = pos.getY();
+        List <Integer> directions = new ArrayList<>();
+        if (y<=150) directions.add(2);
+        if (y>=40) directions.add(0);
+        directions.add(3);
+        Random rand = new Random();
+        return directions.get(rand.nextInt(directions.size()));
     }
 
-    public Player createPlayer2(Position pos) {
-        return new Player(190-pos.getX(),pos.getY(),"#987654", '2', 2);
+    public Player createPlayer1(Position pos, int dir) {
+        return new Player(pos.getX(),pos.getY(),"#FFFFFF", '1', dir);
+    }
+
+    public Player createPlayer2(Position pos, int dir) {
+        return new Player(190-pos.getX(),pos.getY(),"#987654", '2', dir);
     }
 }
 
