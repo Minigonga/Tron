@@ -132,6 +132,40 @@ public class ScoreBoard {
         if (who == 1) score1View = local; else score2View = local;
     }
     public void makeThreeScore(int who) {
+        String color = "#FFFFFF";
+        List<Block> local = new ArrayList<>();
+        int y;
+        if (who == 1) y = 70; else y=95;
+        for (int c = 0; c < 12; c++) {
+            if (c == 0) {
+                for (int r = 0; r < 3; r++) local.add(new Block(c+228, r + y+2, color));
+                for (int r = 0; r < 3; r++) local.add(new Block(c+228, r + y+9, color));
+            }
+            if (c == 1) {
+                for (int r = 0; r < 5; r++) local.add(new Block(c+228, r + y, color));
+                for (int r = 0; r < 5; r++) local.add(new Block(c+228, r + y+9, color));
+            }
+            if (c == 2) {
+                for (int r = 0; r < 3; r++) local.add(new Block(c+228, r + y, color));
+                for (int r = 0; r < 3; r++) local.add(new Block(c+228, r + y+11, color));
+            }
+            if (c >= 3 && c <=8) {
+                for (int r = 0; r < 2; r++) local.add(new Block(c+228, r + y, color));
+                for (int r = 0; r < 2; r++) local.add(new Block(c+228, r + y+12, color));
+            }
+            if (c == 6) for (int r = 0; r < 2; r++) local.add(new Block(c+228, r + y+6, color));
+            if (c == 7) for (int r = 0; r < 4; r++) local.add(new Block(c+228, r + y+5, color));
+            if (c == 8) for (int r = 0; r < 6; r++) local.add(new Block(c+228, r + y+4, color));
+            if (c == 9) {
+                for (int r = 0; r < 6; r++) local.add(new Block(c+228, r + y, color));
+                for (int r = 0; r < 6; r++) local.add(new Block(c+228, r + y+8, color));
+            }
+            if (c == 10) {
+                for (int r = 0; r < 4; r++) local.add(new Block(c+228, r + y+1, color));
+                for (int r = 0; r < 4; r++) local.add(new Block(c+228, r + y+9, color));
+            }
+        }
+        if (who == 1) score1View = local; else score2View = local;
     }
     public List<Block> getScore1View() {
         return score1View;
