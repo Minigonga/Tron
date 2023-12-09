@@ -18,16 +18,14 @@ public class ScoreBoard {
         makeBoost(boost1, boost2);
     }
     public void makeScore(int score1, int score2) {
-        makeTwoScore(2);
-        makeThreeScore(1);
-        /*if (score1 == 0) makeZeroScore(1);
+        if (score1 == 0) makeZeroScore(1);
         else if (score1 == 1) makeOneScore(1);
         else if (score1 == 2) makeTwoScore(1);
         else if (score1 == 3) makeThreeScore(1);
         if (score2 == 0) makeZeroScore(2);
         else if (score2 == 1) makeOneScore(2);
         else if (score2 == 2) makeTwoScore(2);
-        else if (score2 == 3) makeThreeScore(2);*/
+        else if (score2 == 3) makeThreeScore(2);
     }
 
     private void makeBoost(int boost1, int boost2) {
@@ -59,7 +57,6 @@ public class ScoreBoard {
         if (who == 1) boost1View = local;
         else boost2View = local;
     }
-
 
     public void makeZeroScore(int who) {
         String color = "#FFFFFF";
@@ -167,6 +164,7 @@ public class ScoreBoard {
         }
         if (who == 1) score1View = local; else score2View = local;
     }
+
     public List<Block> getScore1View() {
         return score1View;
     }
