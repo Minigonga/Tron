@@ -26,6 +26,8 @@ public class GameViewer extends Viewer<Arena> {
         drawElement(gui, player2, new PlayerViewer());
         drawElements(gui, sb.getScore1View(), new BlockViewer());
         drawElements(gui, sb.getScore2View(), new BlockViewer());
+        drawElements(gui, sb.getBoost1View(), new BlockViewer());
+        drawElements(gui, sb.getBoost2View(), new BlockViewer());
     }
 
     private <T extends Element> void drawElements(GUI gui, List<T> elements, ElementViewer<T> viewer) {
