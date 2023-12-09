@@ -1,5 +1,6 @@
 package org.l07g09.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.l07g09.model.Position;
 
@@ -7,10 +8,14 @@ import org.l07g09.model.Position;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PositionTest {
-    private Position positionTest1 = new Position(2,1);
-    private Position positionTest2 = new Position(1,0);
-    private Position positionTest3 = new Position(1,0);
+    private Position positionTest1, positionTest2, positionTest3;
 
+    @BeforeEach
+    public void setUp() {
+        positionTest1 = new Position(2, 1);
+        positionTest2 = new Position(1, 0);
+        positionTest3 = new Position(1, 0);
+    }
     @Test
     public void getX() {
         assertEquals(2, positionTest1.getX());
