@@ -13,7 +13,7 @@ public class PlayersController extends GameController {
 
     public PlayersController(Arena arena) {super(arena);}
 
-    void jumpPlayer(Player player, int dir) {
+    public void jumpPlayer(Player player, int dir) {
         Position pos = player.getPos();
         player.setPos(pos.getNextJumpPos(dir));
     }
@@ -25,15 +25,15 @@ public class PlayersController extends GameController {
             getModel().collision();
         }
     }
-    void movePlayer(Player player, int dir1) {
+    public void movePlayer(Player player, int dir1) {
         Position pos = player.getPos();
         player.setPos(pos.getNextPos(dir1));
         player.incTrail(pos, player.getColor());
     }
-    void setPlayer1Direction(int direction) {
+    public void setPlayer1Direction(int direction) {
         getModel().getPlayer1().setDirection(direction);
     }
-    void setPlayer2Direction(int direction) {
+    public void setPlayer2Direction(int direction) {
         getModel().getPlayer2().setDirection(direction);
     }
     @Override
