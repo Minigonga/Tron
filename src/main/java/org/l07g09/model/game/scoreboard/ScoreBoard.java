@@ -18,8 +18,8 @@ public class ScoreBoard {
         makeBoost(boost1, boost2);
     }
     public void makeScore(int score1, int score2) {
-        makeZeroScore(2);
-        makeZeroScore(1);
+        makeOneScore(2);
+        makeOneScore(1);
         /*if (score1 == 0) makeZeroScore(1);
         else if (score1 == 1) makeOneScore(1);
         else if (score1 == 2) makeTwoScore(1);
@@ -83,8 +83,11 @@ public class ScoreBoard {
         if (who == 1) y = 70; else y=95;
         for (int c = 0; c < 12; c++) {
             if (c <= 3 || c >= 7) for (int r = 0; r < 3; r++) local.add(new Block(c+228, r + y+11, color));
-            if (who == 1) score1View = local; else score2View = local;
+            if (c == 2) for (int r = 0; r < 2; r++) local.add(new Block(c+228, r + y+3, color));
+            if (c == 3) for (int r = 0; r < 3; r++) local.add(new Block(c+228, r + y+2, color));
+            if (c >= 5 && c <=7) for (int r = 0; r <14; r++) local.add(new Block(c+228, r + y, color));
         }
+        if (who == 1) score1View = local; else score2View = local;
     }
     public void makeTwoScore(int who) {
 
