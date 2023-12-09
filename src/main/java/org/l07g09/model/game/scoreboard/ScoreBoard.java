@@ -41,12 +41,12 @@ public class ScoreBoard {
         int y;
         if (who == 1) y = 70; else y=95;
         for (int c = 0; c < 12; c++) {
-            local.add(new Block(c+228, y, color));
-            local.add(new Block(c+228, y+13, color));
-        }
-        for (int r = 0; r < 14; r++) {
-            local.add(new Block(228, r+y, color));
-            local.add(new Block(239, r+y, color));
+            if (c==0 || c == 11) for (int r = 0; r < 12; r++) local.add(new Block(c+228, r + y+1, color));
+            if (c==1 || c == 10) for (int r = 0; r < 14; r++) local.add(new Block(c+228, r + y, color));
+            if(c>=2 && c<=9) {
+                for (int r = 0; r < 2; r++) local.add(new Block(c+228, r + y, color));
+                for (int r = 0; r < 2; r++) local.add(new Block(c+228, r + y+12, color));
+            }
         }
         if (who == 1) score1View = local; else score2View = local;
     }
