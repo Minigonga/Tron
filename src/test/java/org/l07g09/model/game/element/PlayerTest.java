@@ -17,9 +17,20 @@ public class PlayerTest {
     private Player player;
     @BeforeEach
     public void setUp() {
+        player = new Player(3,0, "#FFFFFF", '1',2);
     }
+
+    //1
     @Test
     public void Player() {
+        assertNotNull(player);
+        assertEquals(3, player.getPos().getX());
+        assertEquals(0, player.getPos().getY());
+        assertTrue(player.getTrails().isEmpty());
+        assertEquals(0, player.getBoostCount());
+        assertFalse(player.getCollide());
+        assertEquals('1', player.getNumber());
+        assertEquals(2, player.getDirection());
     }
     @Test
     public void getTrails() {
@@ -27,12 +38,12 @@ public class PlayerTest {
     }
     @Test
     public void getPos() {
-        assertEquals(0, player.getPos().getX());
+        assertEquals(3, player.getPos().getX());
         assertEquals(0, player.getPos().getY());
     }
     @Test
     public void getDirection() {
-        assertEquals(-1, player.getDirection(), "Se não deu set, então a direction = -1.");
+        assertEquals(2, player.getDirection(), "Se não deu set, então a direction = -1.");
 
         player.setDirection(1);
         assertEquals(1, player.getDirection());
