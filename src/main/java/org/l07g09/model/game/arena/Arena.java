@@ -6,6 +6,7 @@ import org.l07g09.gui.LanternaGUI;
 import org.l07g09.model.Position;
 import org.l07g09.model.game.element.Block;
 import org.l07g09.model.game.element.Player;
+import org.l07g09.model.game.scoreboard.ScoreBoard;
 
 
 import java.awt.*;
@@ -18,18 +19,16 @@ public class Arena {
     Player p1, p2;
     int height, width;
     List<Block> walls;
-
-
     int score1, score2;
+    ScoreBoard sb;
     public Arena(int w,int h) {
         width = w;
         height = h;
     }
 
-    public List<Block> getWalls(){return this.walls;}
+    public List<Block> getWalls() {return this.walls;}
     public void setWalls(List<Block> walls) {this.walls = walls;}
     public Player getPlayer1(){return this.p1;}
-
     public Player getPlayer2(){return this.p2;}
     public void setPlayer1(Player p1) {this.p1 = p1;}
     public void setPlayer2 (Player p2) {this.p2 = p2;}
@@ -49,7 +48,12 @@ public class Arena {
     public void setScore2(int score2) {
         this.score2 = score2;
     }
-
+    public void setSb(ScoreBoard sb) {
+        this.sb = sb;
+    }
+    public ScoreBoard getSb() {
+        return sb;
+    }
     public void collision(){
         if (p1.getPos().getX()<1 || p1.getPos().getX()>width-51 || p1.getPos().getY()<1 || p1.getPos().getY()>height-1) p1.setCollide(true);
         if (p2.getPos().getX()<1 || p2.getPos().getX()>width-51 || p2.getPos().getY()<1 || p2.getPos().getY()>height-1) p2.setCollide(true);
@@ -68,4 +72,5 @@ public class Arena {
             p2.setCollide(true);
         }
     }
+
 }
