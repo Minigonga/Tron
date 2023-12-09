@@ -40,14 +40,21 @@ public class PlayersController extends GameController {
         if (action == GUI.Action.down1 && dir1 != 0) setPlayer1Direction(2);
         if (action == GUI.Action.left1 && dir1 != 1) setPlayer1Direction(3);
         if (action == GUI.Action.jump1){mov1=1;}
+        if (action == GUI.Action.boost1){mov1=2;}
+
         if (action == GUI.Action.up2 && dir2 != 2) setPlayer2Direction(0);
         if (action == GUI.Action.right2 && dir2 != 3) setPlayer2Direction(1);
         if (action == GUI.Action.down2 && dir2 != 0) setPlayer2Direction(2);
         if (action == GUI.Action.left2 && dir2 != 1) setPlayer2Direction(3);
         if (action == GUI.Action.jump2){mov2=1;}
-        if (mov1==0) {movePlayer(p1,dir1);}
-        else {jumpPlayer(p1, dir1);}
-        if(mov2==0) {movePlayer(p2,dir2);}
-        else{jumpPlayer(p2, dir2);}
+        if (action == GUI.Action.boost2){mov2=2;}
+
+        if (mov1 == 0) movePlayer(p1,dir1);
+        else if (mov1 == 1) jumpPlayer(p1, dir1);
+        else boostPlayer(p1, dir1);
+
+        if (mov2 == 0) movePlayer(p2,dir2);
+        else if (mov2 == 1) jumpPlayer(p2, dir2);
+        else boostPlayer(p2, dir2);
     }
 }
