@@ -7,6 +7,7 @@ import org.l07g09.model.Position;
 import org.l07g09.model.game.arena.Arena;
 import org.l07g09.model.game.element.Block;
 import org.l07g09.model.game.element.Player;
+import org.l07g09.model.game.scoreboard.ScoreBoard;
 import org.l07g09.viewer.game.GameViewer;
 import org.mockito.Mockito;
 
@@ -22,6 +23,7 @@ public class AllViewerTest {
     @BeforeEach
     public void setUp() {
         arena = new Arena(20, 20);
+        arena.setSb(new ScoreBoard(0,0,3,3));
         gui = Mockito.mock(GUI.class);
         viewer = new GameViewer(arena);
         block1 = new Block(1, 2, "#0000FF");
@@ -31,8 +33,8 @@ public class AllViewerTest {
         arena.setWalls(Arrays.asList(block1, block2, block3));
         arena.setPlayer1(new Player(3, 0, "#FFFFFF", '1', 2));
         arena.setPlayer2(new Player(10, 5, "#987654", '2', 1));
-        arena.getPlayer1().addTrail(new Position(1, 1), "#FFFFFF");
-        arena.getPlayer2().addTrail(new Position(2, 2), "#987654");
+        arena.getPlayer1().incTrail(new Position(1, 1), "#FFFFFF");
+        arena.getPlayer2().incTrail(new Position(2, 2), "#987654");
     }
 
     @Test
@@ -42,7 +44,8 @@ public class AllViewerTest {
         Mockito.verify(gui, Mockito.times(1)).drawBlock(block1);
         Mockito.verify(gui, Mockito.times(1)).drawBlock(block2);
         Mockito.verify(gui, Mockito.times(1)).drawBlock(block3);
-        Mockito.verify(gui, Mockito.times(5)).drawBlock(Mockito.any(Block.class));
+        //221 por causa dos scores serem blocos
+        Mockito.verify(gui, Mockito.times(221)).drawBlock(Mockito.any(Block.class));
     }
 
     @Test

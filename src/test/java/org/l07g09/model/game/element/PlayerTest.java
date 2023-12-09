@@ -26,7 +26,7 @@ public class PlayerTest {
         assertNotNull(player);
         assertEquals(3, player.getPos().getX());
         assertEquals(0, player.getPos().getY());
-        assertTrue(player.getTrails().isEmpty());
+        assertTrue(player.getTrail().isEmpty());
         assertEquals(0, player.getBoostCount());
         assertFalse(player.getCollide());
         assertEquals('1', player.getNumber());
@@ -34,7 +34,7 @@ public class PlayerTest {
     }
     @Test
     public void getTrails() {
-        assertTrue(player.getTrails().isEmpty(), "The ArrayList should be empty");
+        assertTrue(player.getTrail().isEmpty(), "The ArrayList should be empty");
     }
     @Test
     public void getPos() {
