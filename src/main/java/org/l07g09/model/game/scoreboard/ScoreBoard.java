@@ -9,10 +9,7 @@ import java.util.List;
 public class ScoreBoard {
 
     List<Block> score1View, score2View;
-    List<Block> player1View, player2View;
     List<Block> boost1View, boost2View;
-    List<Block> boostLeftView;
-    List<Block> backMenuView;
     public ScoreBoard(int score1, int score2, int boost1, int boost2) {
         makeScore(score1, score2);
         makeBoost(boost1, boost2);
@@ -27,7 +24,6 @@ public class ScoreBoard {
         else if (score2 == 2) makeTwoScore(2);
         else if (score2 == 3) makeThreeScore(2);
     }
-
     private void makeBoost(int boost1, int boost2) {
         if (boost1 == 0) makeZeroBoost(1);
         /*else if (boost1 == 1) makeOneBoost(1);
@@ -37,25 +33,6 @@ public class ScoreBoard {
         /*else if (boost2 == 1) makeOneBoost(2);
         else if (boost2 == 2) makeTwoBoost(2);
         else if (boost2 == 3) makeTwoBoost(2);*/
-    }
-
-    public void makeZeroBoost(int who) {
-        String color = "#FFFFFF";
-        List<Block> local = new ArrayList<>();
-        int y;
-        if (who == 1) {
-            y = 53;
-        } else {y=119;}
-        for (int c = 0; c < 5; c++) {
-            local.add(new Block(c+231, y, color));
-            local.add(new Block(c+231, y+7, color));
-        }
-        for (int r = 0; r < 8; r++) {
-            local.add(new Block(231, r+y, color));
-            local.add(new Block(236, r+y, color));
-        }
-        if (who == 1) boost1View = local;
-        else boost2View = local;
     }
 
     public void makeZeroScore(int who) {
@@ -163,6 +140,50 @@ public class ScoreBoard {
             }
         }
         if (who == 1) score1View = local; else score2View = local;
+    }
+
+    public void makeZeroBoost(int who) {
+        String color = "#FFFFFF";
+        List<Block> local = new ArrayList<>();
+        int y;
+        if (who == 1) y = 53; else y=119;
+        for (int c = 0; c < 5; c++) {
+            local.add(new Block(c+231, y, color));
+            local.add(new Block(c+231, y+7, color));
+        }
+        for (int r = 0; r < 8; r++) {
+            local.add(new Block(231, r+y, color));
+            local.add(new Block(236, r+y, color));
+        }
+        if (who == 1) boost1View = local;
+        else boost2View = local;
+    }
+    public void makeOneBoost(int who) {
+        String color = "#FFFFFF";
+        List<Block> local = new ArrayList<>();
+        int y;
+        if (who == 1) y = 53; else y=119;
+
+        if (who == 1) boost1View = local;
+        else boost2View = local;
+    }
+    public void makeTwoBoost(int who) {
+        String color = "#FFFFFF";
+        List<Block> local = new ArrayList<>();
+        int y;
+        if (who == 1) y = 53; else y=119;
+
+        if (who == 1) boost1View = local;
+        else boost2View = local;
+    }
+    public void makeThreeBoost(int who) {
+        String color = "#FFFFFF";
+        List<Block> local = new ArrayList<>();
+        int y;
+        if (who == 1) y = 53; else y=119;
+
+        if (who == 1) boost1View = local;
+        else boost2View = local;
     }
 
     public List<Block> getScore1View() {
