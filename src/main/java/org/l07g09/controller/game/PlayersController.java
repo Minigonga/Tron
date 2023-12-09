@@ -18,9 +18,14 @@ public class PlayersController extends GameController {
         player.setPos(pos.getNextJumpPos(dir));
     }
     void boostPlayer(Player player, int dir) {
-        for (int i = 0; i < 7; i++) {
+        if (getModel().getBoost(player.getNumber())==0) {
             movePlayer(player, dir);
-            getModel().collision();
+        } else {
+            getModel().boostUsed(player.getNumber());
+            for (int i = 0; i < 7; i++) {
+                movePlayer(player, dir);
+                getModel().collision();
+            }
         }
     }
     void movePlayer(Player player, int dir1) {
