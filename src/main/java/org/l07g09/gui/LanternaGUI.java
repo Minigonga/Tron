@@ -1,5 +1,6 @@
 package org.l07g09.gui;
 
+import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
@@ -77,6 +78,19 @@ public class LanternaGUI implements GUI {
         drawCharacter(block.getPos(),' ', block.getColor());
     }
 
+    @Override
+    public void drawBoldText(Position position, String text, String color){
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString(color));
+        tg.putString(position.getX(), position.getY(), text, SGR.BOLD);
+    }
+
+    @Override
+    public void drawBlinkText(Position position, String text, String color){
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString(color));
+        tg.putString(position.getX(), position.getY(), text, SGR.BLINK);
+    }
     @Override
     public void drawText(Position position, String text, String color) {
         TextGraphics tg = screen.newTextGraphics();
