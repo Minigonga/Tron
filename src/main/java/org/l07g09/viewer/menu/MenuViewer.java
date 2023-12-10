@@ -12,7 +12,7 @@ public class MenuViewer extends Viewer<Menu> {
 
     @Override
     public void drawElements(GUI gui) {
-        gui.drawBoldText(new Position(18, 4), "TRON", "#FFFFFF");
+        gui.drawBoldText(new Position(18, 4), "TRON", "#0000FF");
         for (int i = 0; i < getModel().getNumberEntries(); i++) {
             if (i == 0) {
                 if (getModel().isSelected(i)) gui.drawBlinkText(new Position(2, 10), getModel().getEntry(i), "#FFD700");
