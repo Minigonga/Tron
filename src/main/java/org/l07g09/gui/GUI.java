@@ -12,6 +12,10 @@ public interface GUI {
 
     void drawBlock(Block block);
 
+    void drawBoldText(Position position, String text, String color);
+
+    void drawBlinkText(Position position, String text, String color);
+
     void drawText(Position position, String text, String color);
 
     Action getNextAction()throws IOException;

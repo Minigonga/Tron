@@ -14,7 +14,7 @@ public class InstructionsViewer extends Viewer<Instructions> {
 
     @Override
     public void drawElements(GUI gui) {
-        gui.drawText(new Position(14, 2), "Instructions", "#FFD700");
+        gui.drawBoldText(new Position(14, 2), "Instructions", "#FFD700");
         String s1="TRON E UM JOGO EM QUE DOIS JOGADORES ";
         String s2="CONTROLAM UMA MOTO E DEIXAM UM RASTRO ";
         String s3="PELA AREA DE JOGO. SE ALGUEM TOCAR NO ";
