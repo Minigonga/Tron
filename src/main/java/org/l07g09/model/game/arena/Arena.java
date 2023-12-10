@@ -1,18 +1,10 @@
 package org.l07g09.model.game.arena;
 
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import org.l07g09.gui.LanternaGUI;
 import org.l07g09.model.Position;
 import org.l07g09.model.game.element.Block;
 import org.l07g09.model.game.element.Player;
 import org.l07g09.model.game.scoreboard.ScoreBoard;
 
-
-import java.awt.*;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Arena {

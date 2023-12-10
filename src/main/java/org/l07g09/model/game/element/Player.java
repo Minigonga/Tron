@@ -8,14 +8,14 @@ import org.l07g09.model.Position;
 
 
 public class Player extends Element {
-    private int boostCount;
+    private final int boostCount;
     protected ArrayList<Block> trail;
 
-    private int direction = -1;
+    private int direction;
 
     private boolean collide;
 
-    private char number;
+    private final char number;
 
     public Player(int x,int y, String color, char number, int dir){
         super(x,y, color);

@@ -1,10 +1,8 @@
 package org.l07g09.viewer.menu;
 
-import com.googlecode.lanterna.SGR;
 import org.l07g09.gui.GUI;
 import org.l07g09.model.Position;
 import org.l07g09.model.menu.Instructions;
-import org.l07g09.model.menu.Menu;
 import org.l07g09.viewer.Viewer;
 
 public class InstructionsViewer extends Viewer<Instructions> {
@@ -48,8 +46,6 @@ public class InstructionsViewer extends Viewer<Instructions> {
         gui.drawText(new Position(26, 18), arrow, "#987654");
         gui.drawText(new Position(27, 20), jump2, "#987654");
         gui.drawText(new Position(27, 21), boost2, "#987654");
-        String exitgame="ESC: GO BACK MENU";
-        gui.drawText(new Position(2, 21), boost1, "#FFFFFF");
         String esc="CLIQUE NO ESC PARA VOLTAR AO MENU";
         gui.drawText(new Position(3, 27), esc, "#FFFFFF");
     }

@@ -3,17 +3,9 @@ package org.l07g09.controller.menu;
 import org.l07g09.Game;
 import org.l07g09.controller.Controller;
 import org.l07g09.gui.GUI;
-import org.l07g09.gui.LanternaGUI;
-import org.l07g09.model.game.arena.ArenaBuilder;
 import org.l07g09.model.menu.Instructions;
 import org.l07g09.model.menu.Menu;
-import org.l07g09.states.GameState;
 import org.l07g09.states.InstructionsState;
-import org.l07g09.states.MenuState;
-
-import java.awt.*;
-import java.io.IOException;
-import java.net.URISyntaxException;
 
 public class MenuController extends Controller<Menu> {
     public MenuController(Menu menu) {
@@ -21,7 +13,7 @@ public class MenuController extends Controller<Menu> {
     }
 
     @Override
-    public void step(Game game, GUI.Action action) throws IOException, URISyntaxException, FontFormatException {
+    public void step(Game game, GUI.Action action) {
         switch (action) {
             case up2:
                 getModel().previousEntry();

@@ -1,7 +1,6 @@
 package org.l07g09;
 
 import org.l07g09.gui.LanternaGUI;
-import org.l07g09.model.game.arena.Arena;
 import org.l07g09.model.game.arena.ArenaBuilder;
 import org.l07g09.states.GameState;
 import org.l07g09.states.MenuState;
@@ -13,20 +12,16 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class Game {
-    private LanternaGUI guiArena;
-    private LanternaGUI guiMenu;
     private int finish;
     private State state;
 
-    public Game() {
-        this.finish=0;
-    }
+    public Game() {this.finish=0;}
 
-    public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException, InterruptedException {
+    public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
         new Game().startMenu();
     }
     private void startMenu() throws IOException, URISyntaxException, FontFormatException {
-        guiMenu = new LanternaGUI(40,30,25);
+        LanternaGUI guiMenu = new LanternaGUI(40, 30, 25);
         this.state = new MenuState(new Menu());
         int i = 0;
         while (this.state != null) {
@@ -40,7 +35,7 @@ public class Game {
     }
     public void startArena() throws IOException, URISyntaxException, FontFormatException {
         finish=0;
-        this.guiArena = new LanternaGUI(280, 190, 4);
+        LanternaGUI guiArena = new LanternaGUI(280, 190, 4);
         setState(new GameState(new ArenaBuilder().createArena(0, 0)));
         while (this.state != null) {
             state.step(this, guiArena);

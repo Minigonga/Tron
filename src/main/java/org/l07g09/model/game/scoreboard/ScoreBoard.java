@@ -5,7 +5,6 @@ import org.l07g09.model.game.element.Block;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ScoreBoard {
 
     List<Block> score1View, score2View;
@@ -47,8 +46,10 @@ public class ScoreBoard {
             if (c==0 || c == 11) for (int r = 0; r < 12; r++) local.add(new Block(c+228, r + y+1, color));
             if (c==1 || c == 10) for (int r = 0; r < 14; r++) local.add(new Block(c+228, r + y, color));
             if(c>=2 && c<=9) {
-                for (int r = 0; r < 2; r++) local.add(new Block(c+228, r + y, color));
-                for (int r = 0; r < 2; r++) local.add(new Block(c+228, r + y+12, color));
+                for (int r = 0; r < 2; r++) {
+                    local.add(new Block(c + 228, r + y, color));
+                    local.add(new Block(c + 228, r + y + 12, color));
+                }
             }
         }
         if (who == 1) score1View = local; else score2View = local;
@@ -82,7 +83,7 @@ public class ScoreBoard {
             if (c == 0) for (int r = 0; r < 3; r++) local.add(new Block(c+228, r + y+2, color));
             if (c == 1) {
                 for (int r = 0; r < 4; r++) local.add(new Block(c+228, r + y+1, color));
-                local.add(new Block(c+228, + y+11, color));
+                local.add(new Block(c+228, y+11, color));
             }
             if (c == 2) {
                 for (int r = 0; r < 3; r++) local.add(new Block(c+228, r + y, color));

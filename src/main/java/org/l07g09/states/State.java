@@ -3,7 +3,6 @@ package org.l07g09.states;
 import org.l07g09.Game;
 import org.l07g09.controller.Controller;
 import org.l07g09.gui.GUI;
-import org.l07g09.gui.LanternaGUI;
 import org.l07g09.viewer.Viewer;
 
 import java.awt.*;

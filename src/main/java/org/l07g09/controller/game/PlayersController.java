@@ -4,10 +4,8 @@ import org.l07g09.Game;
 import org.l07g09.gui.GUI;
 import org.l07g09.model.Position;
 import org.l07g09.model.game.arena.Arena;
-import org.l07g09.model.game.element.Block;
 import org.l07g09.model.game.element.Player;
 
-import java.util.ArrayList;
 
 public class PlayersController extends GameController {
 
