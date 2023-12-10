@@ -55,8 +55,8 @@ public class ArenaBuilder {
         List <Integer> directions = new ArrayList<>();
         if (y<=150) directions.add(2);
         if (y>=40) directions.add(0);
-        if (pos.getX()>=95) directions.add(3);
-        else directions.add(1);
+        if (pos.getX()>=95) directions.add(1);
+        else directions.add(3);
         Random rand = new Random();
         return directions.get(rand.nextInt(directions.size()));
     }
