@@ -12,7 +12,7 @@ public class InstructionsViewer extends Viewer<Instructions> {
 
     @Override
     public void drawElements(GUI gui) {
-        gui.drawBoldText(new Position(14, 2), "Instructions", "#FFD700");
+        gui.drawBoldText(new Position(14, 2), "Instructions", "#0000FF");
         String s1="TRON E UM JOGO EM QUE DOIS JOGADORES ";
         String s2="CONTROLAM UMA MOTO E DEIXAM UM RASTRO ";
         String s3="PELA AREA DE JOGO. SE ALGUEM TOCAR NO ";
@@ -35,17 +35,17 @@ public class InstructionsViewer extends Viewer<Instructions> {
         String arrow="ARROW KEYS";
         String jump2="JUMP: L";
         String boost2="BOOST: P";
-        gui.drawText(new Position(3, 16), player1, "#FFFFFF");
-        gui.drawText(new Position(5, 17), move, "#FFFFFF");
-        gui.drawText(new Position(7, 18), w, "#FFFFFF");
-        gui.drawText(new Position(6, 19), asd, "#FFFFFF");
-        gui.drawText(new Position(2, 20), jump1, "#FFFFFF");
-        gui.drawText(new Position(2, 21), boost1, "#FFFFFF");
-        gui.drawText(new Position(27, 16), player2, "#987654");
-        gui.drawText(new Position(29, 17), move, "#987654");
-        gui.drawText(new Position(26, 18), arrow, "#987654");
-        gui.drawText(new Position(27, 20), jump2, "#987654");
-        gui.drawText(new Position(27, 21), boost2, "#987654");
+        gui.drawText(new Position(3, 16), player1, "#9DD9F3");
+        gui.drawText(new Position(5, 17), move, "#9DD9F3");
+        gui.drawText(new Position(7, 18), w, "#9DD9F3");
+        gui.drawText(new Position(6, 19), asd, "#9DD9F3");
+        gui.drawText(new Position(2, 20), jump1, "#9DD9F3");
+        gui.drawText(new Position(2, 21), boost1, "#9DD9F3");
+        gui.drawText(new Position(27, 16), player2, "#EC9706");
+        gui.drawText(new Position(29, 17), move, "#EC9706");
+        gui.drawText(new Position(26, 18), arrow, "#EC9706");
+        gui.drawText(new Position(27, 20), jump2, "#EC9706");
+        gui.drawText(new Position(27, 21), boost2, "#EC9706");
         String esc="CLIQUE NO ESC PARA VOLTAR AO MENU";
         gui.drawText(new Position(3, 27), esc, "#FFFFFF");
     }

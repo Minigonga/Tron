@@ -30,7 +30,7 @@ public class ArenaBuilder {
     }
 
     private List<Block> createWalls() {
-        String color = "#0000FF";
+        String color = "#808076";
         List<Block> walls = new ArrayList<>();
         for (int c = 0; c < width -50; c++) {
             walls.add(new Block(c, 0, color));
@@ -62,11 +62,11 @@ public class ArenaBuilder {
     }
 
     public Player createPlayer1(Position pos, int dir) {
-        return new Player(pos.getX(),pos.getY(),"#FFFFFF", '1', dir);
+        return new Player(pos.getX(),pos.getY(),"#9DD9F3", '1', dir);
     }
 
     public Player createPlayer2(Position pos, int dir) {
-        return new Player(190-pos.getX(),pos.getY(),"#987654", '2', dir);
+        return new Player(190-pos.getX(),pos.getY(),"#EC9706", '2', dir);
     }
 }
 
