@@ -25,6 +25,8 @@ public class ArenaBuilder {
         arena.setScore2(score2);
         arena.setBoost1(3);
         arena.setBoost2(3);
+        arena.setJumpCd1(0);
+        arena.setJumpCd2(0);
         arena.setSb(new ScoreBoard(score1, score2,3,3));
         return arena;
     }

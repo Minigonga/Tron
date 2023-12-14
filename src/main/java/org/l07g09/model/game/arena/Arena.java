@@ -14,6 +14,7 @@ public class Arena {
     int score1, score2;
     int boost1, boost2;
     ScoreBoard sb;
+    int jumpCd1 ,jumpCd2;
     public Arena(int w,int h) {
         width = w;
         height = h;
@@ -81,5 +82,17 @@ public class Arena {
             p1.setCollide(true);
             p2.setCollide(true);
         }
+    }
+    public void setJumpCd1(int jumpCd1) {
+        this.jumpCd1 = jumpCd1;
+    }
+    public void setJumpCd2(int jumpCd2) {
+        this.jumpCd2 = jumpCd2;
+    }
+    public int getJumpCd1() {
+        return jumpCd1;
+    }
+    public int getJumpCd2() {
+        return jumpCd2;
     }
 }
