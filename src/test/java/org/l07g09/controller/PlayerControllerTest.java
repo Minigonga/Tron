@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.l07g09.controller.game.PlayersController;
 import org.l07g09.model.game.arena.Arena;
 import org.l07g09.model.game.element.Player;
+import org.l07g09.model.game.scoreboard.ScoreBoard;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,10 +13,13 @@ public class PlayerControllerTest {
     private PlayersController controller;
     private Player player1, player2;
     private Arena arena;
+    private ScoreBoard score;
 
     @BeforeEach
     public void setUp() {
         arena = new Arena(20, 20);
+        score = new ScoreBoard(0,0,3,3);
+        arena.setSb(score);
         player1 = new Player(55,30,"#FFFFFF", '1', 2);
         player2 = new Player(20,5,"#000000", '2', 1);
         arena.setPlayer1(player1);
@@ -45,5 +49,12 @@ public class PlayerControllerTest {
         assertEquals(1, player1.getDirection());
         controller.setPlayer2Direction(3);
         assertEquals(3, player2.getDirection());
+    }
+
+    @Test
+    public void boostPlayer() {
+        controller.boostPlayer(player1, 2);
+        assertEquals(55, player1.getPos().getX());
+        assertEquals(37, player1.getPos().getY());
     }
 }
