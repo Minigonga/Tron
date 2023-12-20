@@ -14,16 +14,20 @@ import org.mockito.Mockito;
 import java.io.IOException;
 import java.util.Arrays;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class AllViewerTest {
     private GUI gui;
     private GameViewer viewer;
     private Arena arena;
     private Block block1, block2, block3;
+    private ScoreBoard score;
 
     @BeforeEach
     public void setUp() {
         arena = new Arena(20, 20);
-        arena.setSb(new ScoreBoard(0,0,3,3));
+        score = new ScoreBoard(0,0,3,3);
+        arena.setSb(score);
         gui = Mockito.mock(GUI.class);
         viewer = new GameViewer(arena);
         block1 = new Block(1, 2, "#0000FF");
@@ -64,6 +68,45 @@ public class AllViewerTest {
         Mockito.verify(gui, Mockito.times(1)).clear();
         Mockito.verify(gui, Mockito.times(1)).refresh();
     }
+
+    @Test
+    public void drawMakeScore() {
+        score.makeScore(0,0);
+        assertEquals(84, score.getScore1View().size());
+        assertEquals(84, score.getScore2View().size());
+
+        score.makeScore(1,1);
+        assertEquals(74, score.getScore1View().size());
+        assertEquals(74, score.getScore2View().size());
+
+        score.makeScore(2,2);
+        assertEquals(78, score.getScore1View().size());
+        assertEquals(78, score.getScore2View().size());
+
+        score.makeScore(3,3);
+        assertEquals(78, score.getScore1View().size());
+        assertEquals(78, score.getScore2View().size());
+    }
+
+    @Test
+    public void drawMakeBoost() {
+        score.makeBoost(3,3);
+        assertEquals(24, score.getBoost1View().size());
+        assertEquals(24, score.getBoost2View().size());
+
+        score.makeBoost(2,2);
+        assertEquals(22, score.getBoost1View().size());
+        assertEquals(22, score.getBoost2View().size());
+
+        score.makeBoost(1,1);
+        assertEquals(17, score.getBoost1View().size());
+        assertEquals(17, score.getBoost2View().size());
+
+        score.makeBoost(0,0);
+        assertEquals(26, score.getBoost1View().size());
+        assertEquals(26, score.getBoost2View().size());
+    }
+
 }
 
 
