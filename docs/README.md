@@ -127,7 +127,6 @@ Para resolver este problema nós usamos o State pattern. Com ele conseguimos sep
 
 ![state-pattern.png](images%2Fstate-pattern.png)
 
-(O código ainda não foi implementado).
 
 **Consequences**
 
@@ -145,9 +144,9 @@ Para resolver este problema nós usamos o State pattern. Com ele conseguimos sep
 
 ### SELF-EVALUATION
 
-> In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
+O trabalho foi realizado de forma equilibrada, no sentido de distribuição por colegas de trabalho. A maior parte do projeto foi feito por chamada, via online. Um ficava encarregue na parte de colocar os códigos e na sua organização, enquanto outros dois desenvolviam programas para mandar a esse colega. Sendo assim, este possui mais _commits_ realizados, contudo, não foi tudo feito por si.
+Havia alguns momentos em que não daria para fazer chamada por divergência de horários disponíveis. Neste caso, os colegas que estavam livres avançavam no projeto e deixavam algumas tarefas para os que não estavam disponíves no momento.
 
-**Example**:
-
-- John Doe: 40%
-- Jane Doe: 60%
+Andre Teixeira: 33.33%
+Gonçalo Pinto: 33.33%
+Manuel Mo: 33.33%
