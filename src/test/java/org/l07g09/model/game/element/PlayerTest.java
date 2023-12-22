@@ -66,4 +66,10 @@ public class PlayerTest {
         player.setCollide(false);
         assertFalse(player.getCollide());
     }
+
+    @Test
+    public void setColor() {
+        player.setColor("#FFFFFF");
+        assertEquals("#FFFFFF", player.getColor());
+    }
 }

@@ -9,13 +9,14 @@ import org.l07g09.model.game.element.Player;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PositionTest {
-    private Position positionTest1, positionTest2, positionTest3;
+    private Position positionTest1, positionTest2, positionTest3, positionTest4;
 
     @BeforeEach
     public void setUp() {
         positionTest1 = new Position(2, 1);
         positionTest2 = new Position(1, 0);
         positionTest3 = new Position(1, 0);
+        positionTest4 = new Position(1, 1);
     }
     @Test
     public void getX() {
@@ -59,6 +60,12 @@ public class PositionTest {
         positionTest2 = positionTest2.getNextJumpPos(1);
         assertEquals(new Position(6,0).getX(), positionTest2.getX());
         assertEquals(new Position(6,0).getY(), positionTest2.getY());
+        positionTest3 = positionTest3.getNextJumpPos(3);
+        assertEquals(new Position(-4,0).getX(), positionTest3.getX());
+        assertEquals(new Position(-4,0).getY(), positionTest3.getY());
+        positionTest4 = positionTest4.getNextJumpPos(0);
+        assertEquals(new Position(1,-4).getX(), positionTest4.getX());
+        assertEquals(new Position(1,-4).getY(), positionTest4.getY());
     }
 
     @Test
@@ -69,6 +76,12 @@ public class PositionTest {
         positionTest2 = positionTest2.getNextPos(1);
         assertEquals(new Position(2,0).getY(), positionTest2.getY());
         assertEquals(new Position(2,0).getX(), positionTest2.getX());
+        positionTest3 = positionTest3.getNextPos(3);
+        assertEquals(new Position(0,0).getY(), positionTest3.getY());
+        assertEquals(new Position(0,0).getX(), positionTest3.getX());
+        positionTest4 = positionTest4.getNextPos(0);
+        assertEquals(new Position(1,0).getY(), positionTest4.getY());
+        assertEquals(new Position(1,0).getX(), positionTest4.getX());
     }
 
 
