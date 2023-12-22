@@ -58,7 +58,8 @@ public class PlayersController extends GameController {
         if (action == GUI.Action.left2 && dir2 != 1) setPlayer2Direction(3);
         if (action == GUI.Action.jump2){if (coolDown2==0) mov2=1;}
         if (action == GUI.Action.boost2){mov2=2;}
-
+        dir1 = p1.getDirection();
+        dir2 = p2.getDirection();
         if (mov1 == 0) movePlayer(p1,dir1);
         else if (mov1 == 1){
             jumpPlayer(p1, dir1);
