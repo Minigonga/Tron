@@ -145,8 +145,9 @@ Acabamos por não agrupar o MenuController e o InstructionsController como tinha
 - 
 #### KNOWN CODE SMELLS
 
-Possuímos a classe Instructions.java (em org.l07g09.model.menu.Instructions) sem nenhum conteúdo.
-![instructions_model.png](images%2Finstructions_model.png)
+Possuímos a classe [Instructions.java](https://github.com/FEUP-LDTS-2023/project-l07gr09/blob/master/src/main/java/org/l07g09/model/menu/Instructions.java) (em org.l07g09.model.menu.Instructions) sem nenhum conteúdo.
+
+Na classe [ScoreBoard.java](https://github.com/FEUP-LDTS-2023/project-l07gr09/blob/master/src/main/java/org/l07g09/model/game/scoreboard/ScoreBoard.java), a _score board_ foi feita pondo carater a carater para formar o número desejado. Por isso foram usados muitos _for loops_ para poder escrever um número. No entanto, tentámos realizar os métodos de forma mais fácil para entender (o 'c' significa column e o 'r' significa row nos _for loops_).
 
 ### TESTING
 
