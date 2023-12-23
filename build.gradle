@@ -1,9 +1,9 @@
 plugins {
     id 'java'
-    id 'info.solidsoft.pitest' version '1.7.0'
+    id 'info.solidsoft.pitest' version '1.15.0'
 }
 
-group = 'com.g709.tron'
+group = 'org.l07g09'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -19,9 +19,13 @@ dependencies {
 }
 
 pitest {
-    junit5PluginVersion = '0.12'
+    junit5PluginVersion = '1.1.2'
+    targetClasses = ['org.l07g09.*']
     verbose = true
+    outputFormats = ['HTML']
+    excludedClasses = ['org.l07g09.model.game.scoreboard.ScoreBoard']
 }
+
 
 test {
     useJUnitPlatform()
