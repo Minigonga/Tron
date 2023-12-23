@@ -25,7 +25,7 @@ Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo P
 
 A aplicação onde estavamos a criar o diagrama em UML não tinha setas como as "uni-directional" e, por isso, usamos triângulos para essas ligações (dá para perceber por ter um número ou * ao lado do mesmo).
 
-![uml-tron.png](Images%2Fuml-tron.png)
+![uml-tron.png](images%2Fuml-tron.png)
 
 UML criado pelo IDE.
 
