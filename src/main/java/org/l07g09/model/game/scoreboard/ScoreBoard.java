@@ -42,6 +42,7 @@ public class ScoreBoard {
             color = "#EC9706";
             y = 95;
         }
+        //c significa column, r significa row
         for (int c = 0; c < 12; c++) {
             if (c==0 || c == 11) for (int r = 0; r < 12; r++) local.add(new Block(c+228, r + y+1, color));
             if (c==1 || c == 10) for (int r = 0; r < 14; r++) local.add(new Block(c+228, r + y, color));
