@@ -47,7 +47,7 @@ Boost da moto:
 
 ![game3.png](images%2Fgame3.png)
 
-### DESIGN
+### DESIGN PATTERNS
 
 ### ORGANIZAÇÃO DO CÓDIGO
 
@@ -63,7 +63,9 @@ Para resolver este problema nós usamos o MVC pattern. Este pattern separa o dis
 
 ![mvc-pattern.png](images%2Fmvc-pattern.png)
 
-(O código ainda não foi implementado).
+- [Controller](https://github.com/FEUP-LDTS-2023/project-l07gr09/tree/master/src/main/java/org/l07g09/controller)
+- [Model](https://github.com/FEUP-LDTS-2023/project-l07gr09/tree/master/src/main/java/org/l07g09/model)
+- [View](https://github.com/FEUP-LDTS-2023/project-l07gr09/tree/master/src/main/java/org/l07g09/viewer)
 
 **Consequences**
 
@@ -85,7 +87,12 @@ Para resolver este problema nós usamos o Observer pattern, pattern este que avi
 
 ![observer-pattern.png](images%2Fobserver-pattern.png)
 
-(O código ainda não foi implementado).
+- [KeyListener(GUI)](https://github.com/FEUP-LDTS-2023/project-l07gr09/tree/master/src/main/java/org/l07g09/gui)
+- [PlayersController](https://github.com/FEUP-LDTS-2023/project-l07gr09/blob/master/src/main/java/org/l07g09/controller/game/PlayersController.java)
+- [GameController](https://github.com/FEUP-LDTS-2023/project-l07gr09/blob/master/src/main/java/org/l07g09/controller/game/GameController.java)
+- [ArenaController](https://github.com/FEUP-LDTS-2023/project-l07gr09/blob/master/src/main/java/org/l07g09/controller/game/ArenaController.java)
+- [InstructionsController](https://github.com/FEUP-LDTS-2023/project-l07gr09/blob/master/src/main/java/org/l07g09/controller/menu/InstructionsController.java)
+- [MenuController](https://github.com/FEUP-LDTS-2023/project-l07gr09/blob/master/src/main/java/org/l07g09/controller/menu/MenuController.java)
 
 **Consequences**
 
@@ -93,19 +100,7 @@ Para resolver este problema nós usamos o Observer pattern, pattern este que avi
 
 ### CRIAÇÃO DE OBJETOS
 
-**Problem in Context**
-
-Quando queremos atualizar algum elemento, temos de usar funções de terceiros o que torna o código mais pesado e mais díficil de perceber. Além disso, é mais complexo criar testes unitários.
-
-**The Pattern**
-
-Para resolver este problema nós usamos o Factory pattern. Neste pattern definimos uma interface para criar objetos, deixando as subclasses decidir que classes são para serem inicializadas.
-
-**Implementation**
-
-![factory-pattern.png](images%2Ffactory-pattern.png)
-
-(O código ainda não foi implementado).
+Acabamos por não usar o pattern. Em vez disso criamos o ArenaBuilder que cria todos os elementos contidos no jogo.
 
 **Consequences**
 
@@ -127,20 +122,33 @@ Para resolver este problema nós usamos o State pattern. Com ele conseguimos sep
 
 ![state-pattern.png](images%2Fstate-pattern.png)
 
+- [State](https://github.com/FEUP-LDTS-2023/project-l07gr09/blob/master/src/main/java/org/l07g09/states/State.java)
+- [Controller](https://github.com/FEUP-LDTS-2023/project-l07gr09/blob/master/src/main/java/org/l07g09/controller/Controller.java)
+- [GameController](https://github.com/FEUP-LDTS-2023/project-l07gr09/blob/master/src/main/java/org/l07g09/controller/game/GameController.java)
+- [PlayersController](https://github.com/FEUP-LDTS-2023/project-l07gr09/blob/master/src/main/java/org/l07g09/controller/game/PlayersController.java)
+- [ArenaController](https://github.com/FEUP-LDTS-2023/project-l07gr09/blob/master/src/main/java/org/l07g09/controller/game/ArenaController.java)
+- [InstructionsController](https://github.com/FEUP-LDTS-2023/project-l07gr09/blob/master/src/main/java/org/l07g09/controller/menu/InstructionsController.java)
+- [MenuController](https://github.com/FEUP-LDTS-2023/project-l07gr09/blob/master/src/main/java/org/l07g09/controller/menu/MenuController.java)
+
+Acabamos por não agrupar o MenuController e o InstructionsController como tinhamos planeado inicialmente.
 
 **Consequences**
 
 - Organiza o código de vários estados por classes.
 - Torna mais fácil adicionar novos estados, não tendo a necessidade de mudar qualquer tipo de código.
-
+- 
 #### KNOWN CODE SMELLS
 
-> This section should describe 3 to 5 different code smells that you have identified in your current implementation.
+Possuímos a classe Instructions.java (em org.l07g09.model.menu.Instructions) sem nenhum conteúdo.
+![instructions_model.png](images%2Finstructions_model.png)
 
 ### TESTING
 
-- Screenshot of coverage report.
-- Link to mutation testing report.
+Test coverage report:
+
+![coverage.png](images%2Fcoverage.png)
+
+Pitest
 
 ### SELF-EVALUATION
 
