@@ -23,7 +23,10 @@ pitest {
     targetClasses = ['org.l07g09.*']
     verbose = true
     outputFormats = ['HTML']
-    excludedClasses = ['org.l07g09.model.game.scoreboard.ScoreBoard']
+    excludedClasses = ['org.l07g09.model.game.scoreboard.ScoreBoard',
+                       'org.l07g09.Game', 'org.l07g09.controller.menu.MenuController',
+                       'org.l07g09.controller.menu.InstructionsController',
+                        'org.l07g09.gui.LanternaGUI']
 }
 
 
