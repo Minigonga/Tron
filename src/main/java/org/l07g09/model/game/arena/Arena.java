@@ -78,7 +78,7 @@ public class Arena {
             if (p1.getPos().equals(position)){p1.setCollide(true);}
             if (p2.getPos().equals(position)){p2.setCollide(true);}
         }
-        if (p1.getPos()==p2.getPos()){
+        if (p1.getPos().equals(p2.getPos())){
             p1.setCollide(true);
             p2.setCollide(true);
         }
