@@ -23,9 +23,9 @@ public class PlayersController extends GameController {
             getModel().collision();
         }
     }
-    public void movePlayer(Player player, int dir1) {
+    public void movePlayer(Player player, int dir) {
         Position pos = player.getPos();
-        player.setPos(pos.getNextPos(dir1));
+        player.setPos(pos.getNextPos(dir));
         player.incTrail(pos, player.getColor());
     }
     public void setPlayer1Direction(int direction) {
