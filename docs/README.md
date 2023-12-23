@@ -155,7 +155,9 @@ Test coverage report:
 
 ![coverage.png](images%2Fcoverage.png)
 
-Pitest
+Pitest report:
+
+![pit-test-report.png](images%2Fpit-test-report.png)
 
 ### SELF-EVALUATION
 
