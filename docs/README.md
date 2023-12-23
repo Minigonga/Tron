@@ -2,7 +2,10 @@
 
 Vamos fazer o trabalho sobre o [Tron](https://en.wikipedia.org/wiki/Tron_(video_game)), um jogo em que dois jogadores controlam uma moto e deixam 1 rastro pela área de jogo. Se alguém tocar no rastro (incluindo o seu), perde.
 
-Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo Pinto (up202204943@fe.up.pt), Manuel Mo (up202205000@fe.up.pt) para LDTS 2023/2024.
+Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo Pinto (up202204943@fe.up.pt), Manuel Mo (up202205000@fe.up.pt) para LDTS 2023/2024. 
+
+Ao colocar o projeto no repositório de submissão, as branches desapareceram. No entanto, estas estão visíveis no repositório onde o projeto foi desenvolvido.
+[Repositório onde o projeto foi criado com as branches](https://github.com/Minigonga/Tron).
 
 ### IMPLEMENTED FEATURES
 
@@ -24,6 +27,10 @@ Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo P
 A aplicação onde estavamos a criar o diagrama em UML não tinha setas como as "uni-directional" e, por isso, usamos triângulos para essas ligações (dá para perceber por ter um número ou * ao lado do mesmo).
 
 ![uml-tron.png](Images%2Fuml-tron.png)
+
+UML criado pelo IDE.
+
+![uml-intellij.png](images%2Fuml-intellij.png)
 
 ### MOCKUPS
 
