@@ -34,15 +34,23 @@ public class ScoreBoard {
         else if (boost2 == 3) makeThreeBoost(2);
     }
 
+/*
+ATENCAO explicação dos "makes":
+'c' significa column e 'r' significa row.
+A altura do número criado dependerá do "who" que pode ser ou 1 ou 2 (os jogadores).
+A cor do número criado também dependerá do "who"
+Os tamanhos do primeiro for loop são para a largura do número. o primeiro loop preenche os pixeis da primeira coluna do número.
+ */
+
     public void makeZeroScore(int who) {
         String color = "#9DD9F3";
         List<Block> local = new ArrayList<>();
+
         int y = 70;
         if (who == 2) {
             color = "#EC9706";
             y = 95;
         }
-        //c significa column, r significa row
         for (int c = 0; c < 12; c++) {
             if (c==0 || c == 11) for (int r = 0; r < 12; r++) local.add(new Block(c+228, r + y+1, color));
             if (c==1 || c == 10) for (int r = 0; r < 14; r++) local.add(new Block(c+228, r + y, color));
