@@ -1,8 +1,10 @@
 ## LDTS_709 - TRON
 
-Vamos fazer o trabalho sobre o [Tron](https://en.wikipedia.org/wiki/Tron_(video_game)), um jogo em que dois jogadores controlam uma moto e deixam 1 rastro pela área de jogo. Se alguém tocar no rastro (incluindo o seu), perde.
+[Tron](https://en.wikipedia.org/wiki/Tron_(video_game)) é um jogo em que dois jogadores controlam uma moto e deixam 1 rastro pela área de jogo. Se alguém tocar no rastro (incluindo o seu), perde.
 
 Projeto desenvolvido por André Moreira Teixeira (up202108882@up.pt), Gonçalo Pinto (up202204943@fe.up.pt), Manuel Mo (up202205000@fe.up.pt) para LDTS 2023/2024.
+
+Foram retiradas algumas ideias do modelo do projeto _hero_, devido à semelhança de certos pontos do programa.
 
 [Repositório onde o projeto foi criado](https://github.com/Minigonga/Tron).
 
